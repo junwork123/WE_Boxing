@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Boxing.unity
+- path: C:/Users/Public/Documents/Unity Projects/WE_Boxing/WE_Boxing/Assets/Main.unity
   isLoaded: 1
   isActive: 1
