@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 	// 움직임 변수
 	public float moveSpeed = 5f;
 	public float mouseSensitivity = 2f;
-	public float upDownRange= 15;
+	public float upDownRange= 30;
 
 	private float rotationX;
 	private float rotationY;
@@ -21,9 +21,10 @@ public class Player : MonoBehaviour
 	public float comboDamage = 35;
 
 	Vector3 mDir;
-	Animator mAnim; 	// 애니메이션
-	Camera mCamera;
 	Transform target;
+
+	public Animator mAnim; 	// 애니메이션
+	public Camera mCamera;
 
 
 	void Start(){
@@ -103,6 +104,7 @@ public class Player : MonoBehaviour
 		float moveLR = Input.GetAxis ("Vertical");
 
 		mDir = new Vector3 (moveFB, 0, moveLR);
+		mDir = mCamera.transform.TransformDirection (mDir);
 		mRigidbody.AddForce (mDir * moveSpeed * Time.smoothDeltaTime, ForceMode.Force);
 		mRigidbody.velocity = mDir * moveSpeed;
 
