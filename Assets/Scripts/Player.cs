@@ -25,14 +25,16 @@ public class Player : MonoBehaviour
 
 	public Animator mAnim; 	// 애니메이션
 	public Camera mCamera;
+	public BoxCollider mHandCol;
 
 
 	void Start(){
 		mRigidbody = GetComponent<Rigidbody> ();
 		mAnim = GetComponentInChildren<Animator> ();
 		mCamera = GetComponentInChildren<Camera> ();
-		Cursor.lockState = CursorLockMode.Locked;
+		//mHandCol = GetComponentsInChildren<BoxCollider> ();
 
+		Cursor.lockState = CursorLockMode.Locked;
 		target = GameObject.FindGameObjectWithTag ("Enermy").transform;
 
 		mAnim.SetInteger ("AttackMode", 1);
@@ -54,8 +56,8 @@ public class Player : MonoBehaviour
 
 	void applyDamage(float damage){
 		if ( damage > 0 ){
-			mAnim.SetBool ("Damaged", true);
-			print (this.name +" get damaged : " + damage);
+			//mAnim.SetBool ("Damaged", true);
+			//print (this.name +" get damaged : " + damage);
 			// 체력게이지 감소 추가
 		}
 	}
@@ -63,7 +65,8 @@ public class Player : MonoBehaviour
 	void OnCollisionEnter( Collision col ){
 
 		if ( col.transform.tag == "Enermy" ){
-			applyDamage (Enermy.Power);
+			
+			//applyDamage (Enermy.Power);
 			//col.transform.SendMessage ("applyDamage", Player.playerPower);
 		}
 
@@ -88,7 +91,7 @@ public class Player : MonoBehaviour
 			Power = comboDamage;
 		}
 
-		// 왼쪽, 오른쪽 설정
+		// 왼쪽, 오른쪽 공격 설정
 		if (Input.GetMouseButton (0)) { 
 			mAnim.SetBool ("Right", false);
 			mAnim.SetBool ("Left", true);
@@ -96,6 +99,19 @@ public class Player : MonoBehaviour
 			mAnim.SetBool ("Left", false);
 			mAnim.SetBool ("Right", true);
 		}
+		if ((Input.GetMouseButton (0) || Input.GetMouseButton (1))
+		    && mAnim.GetCurrentAnimatorStateInfo (0).IsName ("attack")) {
+			//공격 중에만 충돌 체크가 될 수 있도록 Collider 값 키기
+			if (mHandCol != null) {
+				mHandCol.enabled = true;
+			}
+
+		} else {
+			// 무기 콜라이더 꺼줌
+			if (mHandCol != null)
+					mHandCol.enabled = false;
+		}
+
 	}
 
 	void Move(){

@@ -47,7 +47,7 @@ public class Enermy : MonoBehaviour{
 	void OnCollisionEnter( Collision col ){
 		
 		if ( col.transform.tag == "Player" ){
-			applyDamage (Player.Power);
+			//applyDamage (Player.Power);
 			//col.transform.SendMessage ("applyDamage", Player.playerPower);
 		}
 
