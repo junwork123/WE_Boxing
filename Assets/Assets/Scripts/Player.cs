@@ -25,14 +25,15 @@ public class Player : MonoBehaviour
 
 	public Animator mAnim; 	// 애니메이션
 	public Camera mCamera;
-	public BoxCollider mHandCol;
 
+	// 델리게이트 
+	public delegate void PlayerAttackHandler();
+	public static event PlayerAttackHandler OnPlayerAttack;
 
 	void Start(){
 		mRigidbody = GetComponent<Rigidbody> ();
 		mAnim = GetComponentInChildren<Animator> ();
 		mCamera = GetComponentInChildren<Camera> ();
-		//mHandCol = GetComponentsInChildren<BoxCollider> ();
 
 		Cursor.lockState = CursorLockMode.Locked;
 		target = GameObject.FindGameObjectWithTag ("Enermy").transform;
@@ -54,18 +55,19 @@ public class Player : MonoBehaviour
 		mAnim.SetBool ("Damaged", false);
 	}
 
-	void applyDamage(float damage){
-		if ( damage > 0 ){
-			//mAnim.SetBool ("Damaged", true);
-			//print (this.name +" get damaged : " + damage);
-			// 체력게이지 감소 추가
-		}
+	public void applyDamage(float damage){
+		Player.OnPlayerAttack ();
+		print (this.name +" applied damage : " + Player.Power);
+	}
+
+	public void getDamage(float damage){
 	}
 
 	void OnCollisionEnter( Collision col ){
 
 		if ( col.transform.tag == "Enermy" ){
-			
+			Player.OnPlayerAttack ();
+			print (this.name +" applied damage : " + Player.Power);
 			//applyDamage (Enermy.Power);
 			//col.transform.SendMessage ("applyDamage", Player.playerPower);
 		}
@@ -95,24 +97,12 @@ public class Player : MonoBehaviour
 		if (Input.GetMouseButton (0)) { 
 			mAnim.SetBool ("Right", false);
 			mAnim.SetBool ("Left", true);
+
+
 		} else if (Input.GetMouseButton (1)) { 
 			mAnim.SetBool ("Left", false);
 			mAnim.SetBool ("Right", true);
-		}
-		if ((Input.GetMouseButton (0) || Input.GetMouseButton (1))
-		    && mAnim.GetCurrentAnimatorStateInfo (0).IsName ("attack")) {
-			//공격 중에만 충돌 체크가 될 수 있도록 Collider 값 키기
-			if (mHandCol != null) {
-				mHandCol.enabled = true;
-			}
-
-		} else {
-			// 무기 콜라이더 꺼줌
-			/*
-			if (mHandCol != null)
-					mHandCol.enabled = false;
-					*/
-		}
+		} 
 
 	}
 

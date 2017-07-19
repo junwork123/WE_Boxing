@@ -20,6 +20,7 @@ public class Enermy : MonoBehaviour{
 	void Start () {
 		mAnim = GetComponent<Animator> ();
 		target = GameObject.FindGameObjectWithTag ("Player");
+		Player.OnPlayerAttack += this.OnPlayerAttack;
 	}
 	
 	// Update is called once per frame
@@ -36,18 +37,15 @@ public class Enermy : MonoBehaviour{
 		mAnim.SetBool ("Damaged", false);
 	}
 
-	void applyDamage(float damage){
-		if ( damage > 0 ){
-			mAnim.SetBool ("Damaged", true);
-			print (this.name +" get damaged : " + damage);
-			// 체력게이지 감소 추가
-		}
+	void OnPlayerAttack(){
+		mAnim.SetBool ("Damaged", true);
+		print (this.name +" get damaged : " + Player.Power);
 	}
 
 	void OnCollisionEnter( Collision col ){
 		
-		if ( col.transform.tag == "Player" ){
-			applyDamage (Player.Power);
+		if ( col.transform.tag == "HandCol" ){
+			//applyDamage (Player.Power);
 			//col.transform.SendMessage ("applyDamage", Player.playerPower);
 		}
 
