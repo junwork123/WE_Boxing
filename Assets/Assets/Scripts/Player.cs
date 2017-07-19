@@ -63,12 +63,12 @@ public class Player : MonoBehaviour
 	public void getDamage(float damage){
 	}
 
-	void OnCollisionEnter( Collision col ){
+	void OnTriggerEnter( Collider col ){
 
-		if ( col.transform.tag == "Enermy" ){
-			Player.OnPlayerAttack ();
-			print (this.name +" applied damage : " + Player.Power);
-			//applyDamage (Enermy.Power);
+		if ( col.transform.tag == "HandCol" ){
+			mAnim.SetBool ("Damaged", true);
+			//print (this.name +" get damaged : " + Player.Power);
+			//Player.OnPlayerAttack ();
 			//col.transform.SendMessage ("applyDamage", Player.playerPower);
 		}
 

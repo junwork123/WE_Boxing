@@ -42,11 +42,10 @@ public class Enermy : MonoBehaviour{
 		print (this.name +" get damaged : " + Player.Power);
 	}
 
-	void OnCollisionEnter( Collision col ){
+	void OnTriggerEnter( Collider col ){
 		
 		if ( col.transform.tag == "HandCol" ){
-			//applyDamage (Player.Power);
-			//col.transform.SendMessage ("applyDamage", Player.playerPower);
+			target.GetComponent<Player>().applyDamage (Player.Power);
 		}
 
 	}
