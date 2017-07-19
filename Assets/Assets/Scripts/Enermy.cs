@@ -39,7 +39,11 @@ public class Enermy : MonoBehaviour{
 
 	void OnPlayerAttack(){
 		mAnim.SetBool ("Damaged", true);
-		print (this.name +" get damaged : " + Player.Power);
+		HP -= Player.Power;
+		print (this.name +" get damaged : " + HP);
+		if (HP < 0) {
+			mAnim.SetBool ("Died", true);
+		}
 	}
 
 	void OnTriggerEnter( Collider col ){

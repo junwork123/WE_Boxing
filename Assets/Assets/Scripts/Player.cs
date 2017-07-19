@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
 
 	public Animator mAnim; 	// 애니메이션
 	public Camera mCamera;
+	BoxCollider []mHands;
+	BoxCollider mHand_L;
+	BoxCollider mHand_R;
 
 	// 델리게이트 
 	public delegate void PlayerAttackHandler();
@@ -35,11 +38,14 @@ public class Player : MonoBehaviour
 		mAnim = GetComponentInChildren<Animator> ();
 		mCamera = GetComponentInChildren<Camera> ();
 
+		mHands = GetComponentsInChildren <BoxCollider> ();
+		mHand_L = mHands [0];
+		mHand_R = mHands [1];
+
 		Cursor.lockState = CursorLockMode.Locked;
 		target = GameObject.FindGameObjectWithTag ("Enermy").transform;
 
 		mAnim.SetInteger ("AttackMode", 1);
-		//StartCoroutine ("applyDamage");
 	}
 
 	void FixedUpdate () 
@@ -93,17 +99,27 @@ public class Player : MonoBehaviour
 			Power = comboDamage;
 		}
 
-		// 왼쪽, 오른쪽 공격 설정
+		// 왼쪽 공격 설정
 		if (Input.GetMouseButton (0)) { 
-			mAnim.SetBool ("Right", false);
 			mAnim.SetBool ("Left", true);
+			mHand_L.enabled = true;
 
+			mAnim.SetBool ("Right", false);
+			mHand_R.enabled = false;
 
+			// 오른쪽 공격 설정 
 		} else if (Input.GetMouseButton (1)) { 
 			mAnim.SetBool ("Left", false);
-			mAnim.SetBool ("Right", true);
-		} 
+			mHand_L.enabled = false;
 
+			mAnim.SetBool ("Right", true);
+			mHand_R.enabled = true;
+
+		} else {
+			mHand_L.enabled = false;
+			mHand_R.enabled = false;
+		}
+			
 	}
 
 	void Move(){

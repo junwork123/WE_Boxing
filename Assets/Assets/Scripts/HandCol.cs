@@ -4,7 +4,6 @@ using System.Collections;
 public class HandCol : MonoBehaviour {
 	
 	public Player player;
-	public BoxCollider hand;
 
 	void Start () {
 		player = GetComponent<Player> ();
