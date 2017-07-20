@@ -15,10 +15,10 @@ public class Player : MonoBehaviour
 
 	public static float Power = 1;
 	public static float HP = 100;
-	public float hookDamage = 10;
+	public float hookDamage = 5;
 	public float japDamage = 5;
-	public float upperDamage = 15;
-	public float comboDamage = 35;
+	public float upperDamage = 5;
+	public float comboDamage = 5;
 
 	Vector3 mDir;
 	Transform target;

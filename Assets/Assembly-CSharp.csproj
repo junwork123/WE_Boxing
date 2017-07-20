@@ -57,6 +57,7 @@
      <Compile Include="Assets\Effect\GradientGUIBars\Script\MoveCameraScript.cs" />
      <Compile Include="Assets\Scripts\Camera.cs" />
      <Compile Include="Assets\Scripts\Enermy.cs" />
+     <Compile Include="Assets\Scripts\FrameManager.cs" />
      <Compile Include="Assets\Scripts\HandCol.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <None Include="Assets\Textures\WB\keyframe_information.txt" />

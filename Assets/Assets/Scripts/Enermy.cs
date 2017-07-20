@@ -11,14 +11,17 @@ public class Enermy : MonoBehaviour{
 
 	public static float Power = 1;
 	public static float HP = 100;
-	public float hookDamage = 10;
+	public float hookDamage = 5;
 	public float japDamage = 5;
-	public float upperDamage = 15;
-	public float comboDamage = 35;
+	public float upperDamage = 5;
+	public float comboDamage = 5;
+
+	bool isHolding = false;
 
 	// Use this for initialization
 	void Start () {
 		mAnim = GetComponent<Animator> ();
+
 		target = GameObject.FindGameObjectWithTag ("Player");
 		Player.OnPlayerAttack += this.OnPlayerAttack;
 	}
@@ -38,11 +41,10 @@ public class Enermy : MonoBehaviour{
 	}
 
 	void OnPlayerAttack(){
-		mAnim.SetBool ("Damaged", true);
-		HP -= Player.Power;
-		print (this.name +" get damaged : " + HP);
-		if (HP < 0) {
-			mAnim.SetBool ("Died", true);
+		if (isHolding == false) {
+
+			isHolding = true;
+			StartCoroutine ("Holding");
 		}
 	}
 
@@ -53,24 +55,47 @@ public class Enermy : MonoBehaviour{
 		}
 
 	}
+
+	IEnumerator Holding(){
+		
+		float ratio1 = 0.2f;
+		float ratio2 = 0.5f;
+		float countTime = mAnim.GetCurrentAnimatorClipInfo(0).Length;
+		yield return new WaitForSeconds(countTime * ratio1);
+
+		mAnim.SetBool ("Damaged", true);
+
+
+		yield return new WaitForSeconds(countTime * ratio2);
+
+		HP -= Player.Power;
+		print (this.name + " get damaged : " + HP);
+		isHolding = false;
+
+		if (HP <= 0) {
+			mAnim.SetBool ("Died", true);
+			yield return null; 
+		}
+		
+	}
 	/*
 	void Attack(){
 		// 어택 모드 설정
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 			mAnim.SetInteger ("AttackMode", 1);
-			atkPower = hookDamage;
+			Power = hookDamage;
 
 		} else if (Input.GetKeyDown (KeyCode.Alpha2)) {
 			mAnim.SetInteger ("AttackMode", 2);
-			atkPower = japDamage;
+			Power = japDamage;
 
 		} else if (Input.GetKeyDown (KeyCode.Alpha3)) {
 			mAnim.SetInteger ("AttackMode", 3);
-			atkPower = upperDamage;
+			Power = upperDamage;
 
 		} else if (Input.GetKeyDown (KeyCode.Alpha4)) {
 			mAnim.SetInteger ("AttackMode", 4);
-			atkPower = comboDamage;
+			Power = comboDamage;
 		}
 
 		// 왼쪽, 오른쪽 설정

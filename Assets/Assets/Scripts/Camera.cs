@@ -10,31 +10,30 @@ public class angle : MonoBehaviour {
 	float mouseMoveValueX;
 	float mouseMoveValueY;
 
+	Vector3 screenCenter;
+
 	// Use this for initialization
 	void Start () {
 		Transform target = GameObject.Find ("Enermy").transform;
 		transform.LookAt (target);
+		screenCenter = new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2);
+
 	}
-	
+
+	void FixedUpdate(){
+		
+		Ray ray = Camera.main.ScreenPointToRay(screenCenter);
+		RaycastHit hit;
+		if(Physics.Raycast(ray, out hit, 500f))
+		{
+			if (hit.collider.gameObject.tag == "Enermy")
+			{
+				print ("Enermy Detected");               
+			}
+		}
+	}
 	// Update is called once per frame
 	void LateUpdate () {
-		
-		/*
-		if (Input.GetMouseButton(0)) {
-			mouseMoveValueX = Input.GetAxis ("Mouse X");
-			mouseMoveValueY = Input.GetAxis ("Mouse Y");
 
-			rotationY += mouseMoveValueX * sensitivity * Time.fixedDeltaTime;
-			rotationX += mouseMoveValueY * sensitivity * Time.fixedDeltaTime;
-
-			rotationY %= 360;
-			rotationX %= 360;
-
-			rotationX = Mathf.Clamp (rotationX, -140.0f, 140.0f);
-			rotationY = Mathf.Clamp (rotationY, -140.0f, 140.0f);
-			transform.eulerAngles = new Vector3 (-rotationX, rotationY, 0.0f);
-
-		}
-	*/
 	}
 }
