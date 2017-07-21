@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
 	{ 
 		init();
 		Move ();
-		Attack ();;
+		Attack ();
 	} 
 
 	void init() {

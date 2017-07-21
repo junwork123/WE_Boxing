@@ -16,6 +16,9 @@ public class Enermy : MonoBehaviour{
 	public float upperDamage = 5;
 	public float comboDamage = 5;
 
+	int attackMode;
+	int attackDir;
+
 	bool isHolding = false;
 
 	// Use this for initialization
@@ -25,49 +28,54 @@ public class Enermy : MonoBehaviour{
 		target = GameObject.FindGameObjectWithTag ("Player");
 		Player.OnPlayerAttack += this.OnPlayerAttack;
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () 
+
+	void Update () 
 	{ 
+		StartCoroutine ("changeState");
 		init();
 		Move ();
-		//Attack ();;
+		Attack ();
 	} 
 
 	void init() {
 		mAnim.SetBool ("Left", false);
 		mAnim.SetBool ("Right", false);
 		mAnim.SetBool ("Damaged", false);
-	}
 
-	void OnPlayerAttack(){
-		if (isHolding == false) {
-
-			isHolding = true;
-			StartCoroutine ("Holding");
-		}
+		attackMode = Random.Range (1, 4); // 공격모션 : 훅 = 1, 잽 = 2, 어퍼 = 3, 콤보 = 4
+		attackDir = Random.Range (0, 1); // 공격방향 : 왼쪽 = 0, 오른쪽 = 1
 	}
 
 	void OnTriggerEnter( Collider col ){
-		
+
 		if ( col.transform.tag == "HandCol" ){
 			target.GetComponent<Player>().applyDamage (Player.Power);
 		}
 
 	}
 
+	void OnPlayerAttack(){
+		// 홀딩 상태가 아닐때만 피격
+		if (isHolding == false) {
+
+			isHolding = true;
+			StartCoroutine ("Holding");
+		}
+	}
+		
+	// 코루틴 함수
 	IEnumerator Holding(){
 		
 		float ratio1 = 0.2f;
-		float ratio2 = 0.5f;
+		float ratio2 = 0.4f;
 		float countTime = mAnim.GetCurrentAnimatorClipInfo(0).Length;
-		yield return new WaitForSeconds(countTime * ratio1);
 
+		// ratio1 비율까지 기다렸다가 파라미터 변경
+		yield return new WaitForSeconds(countTime * ratio1);
 		mAnim.SetBool ("Damaged", true);
 
-
+		// ratio2비율까지 기다렸다가 HP감소, 메시지 출력, 홀딩 상태 변경
 		yield return new WaitForSeconds(countTime * ratio2);
-
 		HP -= Player.Power;
 		print (this.name + " get damaged : " + HP);
 		isHolding = false;
@@ -78,36 +86,12 @@ public class Enermy : MonoBehaviour{
 		}
 		
 	}
-	/*
+
 	void Attack(){
-		// 어택 모드 설정
-		if (Input.GetKeyDown (KeyCode.Alpha1)) {
-			mAnim.SetInteger ("AttackMode", 1);
-			Power = hookDamage;
 
-		} else if (Input.GetKeyDown (KeyCode.Alpha2)) {
-			mAnim.SetInteger ("AttackMode", 2);
-			Power = japDamage;
 
-		} else if (Input.GetKeyDown (KeyCode.Alpha3)) {
-			mAnim.SetInteger ("AttackMode", 3);
-			Power = upperDamage;
-
-		} else if (Input.GetKeyDown (KeyCode.Alpha4)) {
-			mAnim.SetInteger ("AttackMode", 4);
-			Power = comboDamage;
-		}
-
-		// 왼쪽, 오른쪽 설정
-		if (Input.GetMouseButton (0)) { 
-			mAnim.SetBool ("Right", false);
-			mAnim.SetBool ("Left", true);
-		} else if (Input.GetMouseButton (1)) { 
-			mAnim.SetBool ("Left", false);
-			mAnim.SetBool ("Right", true);
-		}
 	}
-*/
+
 	void Move(){
 		transform.rotation = Quaternion.Slerp (transform.rotation, 
 			Quaternion.LookRotation (target.transform.position - transform.position), 1);
@@ -121,6 +105,11 @@ public class Enermy : MonoBehaviour{
 			transform.Translate (Vector3.back * Time.smoothDeltaTime * moveSpeed);
 
 		}
+	}
+
+	IEnumerator changeState(){
+		yield return new WaitForSeconds (1f);
+
 	}
 			
 }
