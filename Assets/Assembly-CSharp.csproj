@@ -46,24 +46,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Effect\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
-     <Compile Include="Assets\Effect\EffectExamples\Shared\Scripts\GunAim.cs" />
-     <Compile Include="Assets\Effect\EffectExamples\Shared\Scripts\GunShoot.cs" />
-     <Compile Include="Assets\Effect\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
-     <Compile Include="Assets\Effect\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
-     <Compile Include="Assets\Effect\GradientGUIBars\Script\ControlGUIScript.cs" />
-     <Compile Include="Assets\Effect\GradientGUIBars\Script\GUIBarScript.cs" />
-     <Compile Include="Assets\Effect\GradientGUIBars\Script\MoreButtonScript.cs" />
-     <Compile Include="Assets\Effect\GradientGUIBars\Script\MoveCameraScript.cs" />
+     <Compile Include="Assets\Scripts\BloodRepeatScript.cs" />
      <Compile Include="Assets\Scripts\Enermy.cs" />
      <Compile Include="Assets\Scripts\FrameManager.cs" />
      <Compile Include="Assets\Scripts\HandCol.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerCam.cs" />
      <None Include="Assets\Textures\WB\keyframe_information.txt" />
-     <None Include="Assets\Effect\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
      <None Include="Assets\ProjectSettings\ProjectVersion.txt" />
-     <None Include="Assets\Effect\GradientGUIBars\ReadMe\AboutFonts.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>M:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -8,6 +8,7 @@ public class Enermy : MonoBehaviour{
 	public float rotationSpeed = 5.0f;
 	GameObject target;
 	Animator mAnim; 	// 애니메이션
+	IEnumerator mCorutine;
 
 	public static float Power = 1;
 	public static float HP = 100;
@@ -24,6 +25,7 @@ public class Enermy : MonoBehaviour{
 	// Use this for initialization
 	void Start () {
 		mAnim = GetComponent<Animator> ();
+		mCorutine = Holding ();
 
 		target = GameObject.FindGameObjectWithTag ("Player");
 		Player.OnPlayerAttack += this.OnPlayerAttack;
@@ -48,7 +50,11 @@ public class Enermy : MonoBehaviour{
 
 	void OnTriggerEnter( Collider col ){
 
+		// 손의 콜라이더에 닿았을 때
 		if ( col.transform.tag == "HandCol" ){
+
+			// 회피중이 아니라면 피격됬음을 알림
+			// if( not avoid )
 			target.GetComponent<Player>().applyDamage (Player.Power);
 		}
 
@@ -59,7 +65,8 @@ public class Enermy : MonoBehaviour{
 		if (isHolding == false) {
 
 			isHolding = true;
-			StartCoroutine ("Holding");
+			mCorutine = Holding ();
+			StartCoroutine (mCorutine);
 		}
 	}
 		
@@ -67,7 +74,7 @@ public class Enermy : MonoBehaviour{
 	IEnumerator Holding(){
 		
 		float ratio1 = 0.2f;
-		float ratio2 = 0.4f;
+		float ratio2 = 0.3f;
 		float countTime = mAnim.GetCurrentAnimatorClipInfo(0).Length;
 
 		// ratio1 비율까지 기다렸다가 파라미터 변경
@@ -82,7 +89,7 @@ public class Enermy : MonoBehaviour{
 
 		if (HP <= 0) {
 			mAnim.SetBool ("Died", true);
-			yield return null; 
+			//yield return null; 
 		}
 		
 	}
