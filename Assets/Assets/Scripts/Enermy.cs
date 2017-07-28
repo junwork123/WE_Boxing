@@ -33,7 +33,6 @@ public class Enermy : MonoBehaviour{
 
 	void Update () 
 	{ 
-		StartCoroutine ("changeState");
 		init();
 		Move ();
 		Attack ();
@@ -112,11 +111,6 @@ public class Enermy : MonoBehaviour{
 			transform.Translate (Vector3.back * Time.smoothDeltaTime * moveSpeed);
 
 		}
-	}
-
-	IEnumerator changeState(){
-		yield return new WaitForSeconds (1f);
-
 	}
 			
 }
