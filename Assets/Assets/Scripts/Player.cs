@@ -2,71 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Characters
 {
 	// 움직임 변수
-	public float moveSpeed = 5f;
 	public float mouseSensitivity = 2f;
 	public float upDownRange= 30;
 
 	private float rotationX;
 	private float rotationY;
-	private Rigidbody mRigidbody;
-
-	public static float Power = 1;
-	public static float HP = 100;
-	public float hookDamage = 5;
-	public float japDamage = 5;
-	public float upperDamage = 5;
-	public float comboDamage = 5;
 
 	Vector3 mDir;
-	Transform target;
-
-	public Animator mAnim; 	// 애니메이션
 	public Camera mCamera;
-	BoxCollider []mHands;
-	BoxCollider mHand_L;
-	BoxCollider mHand_R;
+
 
 	// 델리게이트 
 	public delegate void PlayerAttackHandler();
 	public static event PlayerAttackHandler OnPlayerAttack;
 
-	void Start(){
-		mRigidbody = GetComponent<Rigidbody> ();
-		mAnim = GetComponentInChildren<Animator> ();
-		mCamera = GetComponentInChildren<Camera> ();
+	Player(){}
 
-		mHands = GetComponentsInChildren <BoxCollider> ();
-		mHand_L = mHands [0];
-		mHand_R = mHands [1];
+	void Start(){
+		mCamera = GetComponentInChildren<Camera> ();
+		mAnim.SetInteger ("AttackMode", 1);
 
 		Cursor.lockState = CursorLockMode.Locked;
-		target = GameObject.FindGameObjectWithTag ("Enermy").transform;
 
-		mAnim.SetInteger ("AttackMode", 1);
 	}
 
 	void FixedUpdate () 
 	{ 
-		init();
+		Init();
 		Move ();
 		Attack ();
 	} 
 
-	void init() {
+	public override void Init() {
 		mAnim.SetBool ("Left", false);
 		mAnim.SetBool ("Right", false);
 		mAnim.SetBool ("Damaged", false);
 	}
 
-	public void applyDamage(float damage){
+	public override void applyDamage(float damage){
 		Player.OnPlayerAttack ();
 		print (this.name +" applied damage : " + Player.Power);
 	}
 
-	public void getDamage(float damage){
+	public override void getDamage(float damage){
 	}
 
 	void OnTriggerEnter( Collider col ){
@@ -80,7 +61,7 @@ public class Player : MonoBehaviour
 
 	}
 
-	void Attack(){
+	public override void Attack(){
 		// 어택 모드 설정
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 			mAnim.SetInteger ("AttackMode", 1);
@@ -122,7 +103,7 @@ public class Player : MonoBehaviour
 			
 	}
 
-	void Move(){
+	public override void Move(){
 		
 		float moveFB = Input.GetAxis ("Horizontal");
 		float moveLR = Input.GetAxis ("Vertical");

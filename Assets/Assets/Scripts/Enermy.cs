@@ -2,43 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enermy : MonoBehaviour{
-
-	public float moveSpeed = 5.0f;
+public class Enermy : Characters
+{
 	public float rotationSpeed = 5.0f;
-	GameObject target;
-	Animator mAnim; 	// 애니메이션
-	IEnumerator mCorutine;
 
-	public static float Power = 1;
-	public static float HP = 100;
-	public float hookDamage = 5;
-	public float japDamage = 5;
-	public float upperDamage = 5;
-	public float comboDamage = 5;
+	IEnumerator mCorutine;
 
 	int attackMode;
 	int attackDir;
-
 	bool isHolding = false;
+
+	Enermy(){}
 
 	// Use this for initialization
 	void Start () {
-		mAnim = GetComponent<Animator> ();
-		mCorutine = Holding ();
 
-		target = GameObject.FindGameObjectWithTag ("Player");
+		mCorutine = Holding ();
 		Player.OnPlayerAttack += this.OnPlayerAttack;
 	}
 
 	void Update () 
 	{ 
-		init();
+		Init();
 		Move ();
 		Attack ();
 	} 
 
-	void init() {
+	public override void Init() {
 		mAnim.SetBool ("Left", false);
 		mAnim.SetBool ("Right", false);
 		mAnim.SetBool ("Damaged", false);
@@ -57,6 +47,12 @@ public class Enermy : MonoBehaviour{
 			target.GetComponent<Player>().applyDamage (Player.Power);
 		}
 
+	}
+
+	public override void applyDamage(float damage){
+	}
+
+	public override void getDamage(float damage){
 	}
 
 	void OnPlayerAttack(){
@@ -93,24 +89,29 @@ public class Enermy : MonoBehaviour{
 		
 	}
 
-	void Attack(){
+	public override void Attack(){
 
 
 	}
 
-	void Move(){
+	public override void Move(){
+		// 플레이어 쪽으로 방향 회전
 		transform.rotation = Quaternion.Slerp (transform.rotation, 
 			Quaternion.LookRotation (target.transform.position - transform.position), 1);
 	
+		// 플레이어와의 거리계산
 		float distance = Vector3.Distance (target.transform.position, transform.position);
-
+		/*
 		if (distance > 5.0f)
 			transform.Translate (Vector3.forward * Time.smoothDeltaTime * moveSpeed);
 		
 		else if (distance <= 1.0f) {
 			transform.Translate (Vector3.back * Time.smoothDeltaTime * moveSpeed);
 
-		}
+		}*/
+		Vector3 mDir = transform.eulerAngles;
+		mRigidbody.AddForce (mDir * moveSpeed * Time.smoothDeltaTime, ForceMode.Force);
+		mRigidbody.velocity = mDir * moveSpeed;
 	}
 			
 }

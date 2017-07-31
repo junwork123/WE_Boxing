@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BloodRepeatScript.cs" />
+     <Compile Include="Assets\Scripts\Characters.cs" />
      <Compile Include="Assets\Scripts\Enermy.cs" />
      <Compile Include="Assets\Scripts\FrameManager.cs" />
      <Compile Include="Assets\Scripts\HandCol.cs" />
+     <Compile Include="Assets\Scripts\ICharacters.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerCam.cs" />
      <None Include="Assets\Textures\WB\keyframe_information.txt" />
