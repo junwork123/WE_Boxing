@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Enermy : Characters
 {
-	public float rotationSpeed = 5.0f;
-
 	IEnumerator mCorutine;
+	Vector3 mDir;
+	Vector3[] mDirArray = { Vector3.forward, Vector3.back, Vector3.right, Vector3.left };
+	public UnityEngine.AI.NavMeshAgent mNav;
 
 	int attackMode;
 	int attackDir;
@@ -15,10 +16,14 @@ public class Enermy : Characters
 	Enermy(){}
 
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
 
-		mCorutine = Holding ();
+		mCorutine = Holding ();		
+		mNav.SetDestination (target.transform.position);
+		StartCoroutine (Tracking());
+
 		Player.OnPlayerAttack += this.OnPlayerAttack;
+
 	}
 
 	void Update () 
@@ -89,6 +94,27 @@ public class Enermy : Characters
 		
 	}
 
+	IEnumerator Tracking(){
+		
+		if (mNav.remainingDistance > 3.0f) {
+			mDir = Vector3.forward;
+			mNav.SetDestination (target.transform.position);
+		}
+		else if (mNav.remainingDistance <= mNav.stoppingDistance) {
+			mDir = Vector3.back;
+			mNav.Stop ();
+		}
+		else {
+			//mDir = mDirArray[Random.Range(0, mDirArray.Length)];
+			mDir = Vector3.left;
+			mNav.SetDestination (target.transform.position);
+		}
+		transform.Translate (mDir * Time.smoothDeltaTime * moveSpeed);
+		yield return new WaitForSeconds(1.0f);
+
+
+	}
+
 	public override void Attack(){
 
 
@@ -96,22 +122,25 @@ public class Enermy : Characters
 
 	public override void Move(){
 		// 플레이어 쪽으로 방향 회전
+
 		transform.rotation = Quaternion.Slerp (transform.rotation, 
 			Quaternion.LookRotation (target.transform.position - transform.position), 1);
-	
-		// 플레이어와의 거리계산
-		float distance = Vector3.Distance (target.transform.position, transform.position);
-		/*
-		if (distance > 5.0f)
-			transform.Translate (Vector3.forward * Time.smoothDeltaTime * moveSpeed);
-		
-		else if (distance <= 1.0f) {
-			transform.Translate (Vector3.back * Time.smoothDeltaTime * moveSpeed);
 
-		}*/
-		Vector3 mDir = transform.eulerAngles;
-		mRigidbody.AddForce (mDir * moveSpeed * Time.smoothDeltaTime, ForceMode.Force);
-		mRigidbody.velocity = mDir * moveSpeed;
-	}
-			
+		StartCoroutine (Tracking());
+	
+		/*
+		float distance = Vector3.Distance (target.transform.position, transform.position);
+
+		if (distance > 4.0f)
+			mDir = Vector3.forward;
+		else if (distance <= 1.0f) {
+			mDir = Vector3.back;
+		}
+		else {
+			//mDir = mDirArray[Random.Range(0, mDirArray.Length)];
+			mDir = Vector3.left;
+		}
+			transform.Translate (mDir * Time.smoothDeltaTime * moveSpeed);
+		*/
+	}	
 }

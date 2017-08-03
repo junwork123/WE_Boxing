@@ -4,9 +4,10 @@ using System.Collections;
 public class HandCol : MonoBehaviour {
 	
 	public Characters opponent;
+	public BoxCollider mHand;
 
 	void Start () {
-		
+		mHand.enabled = false;
 	}
 
 	void OnTriggerEnter(Collider col)

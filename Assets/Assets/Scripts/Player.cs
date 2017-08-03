@@ -21,7 +21,7 @@ public class Player : Characters
 
 	Player(){}
 
-	void Start(){
+	public override void Start(){
 		mCamera = GetComponentInChildren<Camera> ();
 		mAnim.SetInteger ("AttackMode", 1);
 

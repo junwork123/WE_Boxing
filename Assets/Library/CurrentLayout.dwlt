@@ -91,7 +91,11 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 421}
   m_MaxSize: {x: 22012, y: 10021}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 80
+=======
+  controlID: 136
+>>>>>>> Stashed changes
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -135,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 421}
   m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 24
+  controlID: 137
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -236,8 +240,13 @@ MonoBehaviour:
   - {fileID: 18}
   - {fileID: 13}
   - {fileID: 12}
+<<<<<<< Updated upstream
   m_Selected: 0
   m_LastSelected: 1
+=======
+  m_Selected: 1
+  m_LastSelected: 0
+>>>>>>> Stashed changes
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -256,8 +265,8 @@ MonoBehaviour:
     y: 375
     width: 704
     height: 356
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -287,7 +296,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 92
-    width: 702
+    width: 724
     height: 354
   m_ViewPositions:
     m_KeySerializationHelper:
@@ -303,7 +312,11 @@ MonoBehaviour:
     - {x: 373.6, y: 192.40001}
     - {x: 373.6, y: 192.40001}
     - {x: 373.6, y: 192.40001}
+<<<<<<< Updated upstream
     - {x: 433.2, y: 198.40002}
+=======
+    - {x: 242.40002, y: 164.40001}
+>>>>>>> Stashed changes
   m_PreviewAnimator: {fileID: 0}
   m_AnimatorController: {fileID: 9100000, guid: efd8108e91d6b6249873901629eedbaa,
     type: 2}
@@ -375,24 +388,31 @@ MonoBehaviour:
     width: 317
     height: 710
   m_TreeViewState:
+<<<<<<< Updated upstream
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: bc2a0000
     m_LastClickedID: 10940
     m_ExpandedIDs: c6faffffdcfaffffe2faffffecfafffff0faffff38fbffff3efbffff4afbffff70fbffff74fbffff7afbffff84fbffff88fbffffd0fbffffd6fbffffe2fbffffe4fbffff00000000c4290000282a0000782a0000e22a0000202b0000
+=======
+    scrollPos: {x: 0, y: 155}
+    m_SelectedIDs: f62a0000
+    m_LastClickedID: 10998
+    m_ExpandedIDs: 4efbffff52fbffff56fbffff5efbffff6efbffff86fbffff96fbffffbefbffffd8fbffffdefbffffe0fbffff000000003c29000054290000fa2900001e2a0000342a0000802a0000982a0000a02a0000de2a0000f62a00007a2b0000862b0000cc2b0000d42b0000ec2b0000f02b0000f42b0000
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: ring
+      m_OriginalName: ring
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 10912
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 7}
     m_SearchString: 
@@ -427,7 +447,7 @@ MonoBehaviour:
     y: 92
     width: 275
     height: 710
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 389.95508}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -160
@@ -481,9 +501,15 @@ MonoBehaviour:
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
     m_SelectedIDs: 68260000
     m_LastClickedID: 9832
     m_ExpandedIDs: 0000000032260000e027000036280000902800004e2c0000502c0000522c0000542c0000562c0000582c00005a2c000000ca9a3bffffff7f
+=======
+    m_SelectedIDs: c0250000
+    m_LastClickedID: 9664
+    m_ExpandedIDs: 0000000058250000942500008a270000f0270000082e00000a2e00000c2e00000e2e0000102e0000122e0000142e000000ca9a3bffffff7f
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -511,7 +537,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< Updated upstream
     m_ExpandedIDs: 000000003226000084270000362800004e2c0000502c0000522c0000542c0000562c0000582c00005a2c0000
+=======
+    m_ExpandedIDs: 0000000058250000942500008a270000f027000014280000082e00000a2e00000c2e00000e2e0000102e0000122e0000142e0000
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -542,15 +572,24 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 042b0000d4290000302900000000000010280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
+<<<<<<< Updated upstream
       m_Name: EnermyAnim
       m_OriginalName: EnermyAnim
+=======
+      m_Name: Enermy
+      m_OriginalName: Enermy
+>>>>>>> Stashed changes
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
+<<<<<<< Updated upstream
       m_UserData: 9626
+=======
+      m_UserData: 1604
+>>>>>>> Stashed changes
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -666,17 +705,17 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 92
-    width: 702
+    width: 609
     height: 354
   m_SceneLighting: 1
-  lastFramingTime: 2997.7651571943866
+  lastFramingTime: 6341.176601214562
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.20351644, y: 1.9603045, z: -2.7351882}
+    m_Target: {x: 0.71132135, y: -0.33786726, z: -0.6454649}
     speed: 2
-    m_Value: {x: 0.20351644, y: 1.9603045, z: -2.7351882}
+    m_Value: {x: 0.71132135, y: -0.33786726, z: -0.6454649}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -699,13 +738,17 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.018613376, y: 0.974827, z: -0.20351095, w: 0.08915853}
+    m_Target: {x: 0.29206005, y: 0.63756734, z: -0.28495735, w: 0.6534586}
     speed: 2
+<<<<<<< Updated upstream
     m_Value: {x: 0.018613376, y: 0.974827, z: -0.20351095, w: 0.08915853}
+=======
+    m_Value: {x: 0.29206005, y: 0.63756734, z: -0.28495735, w: 0.6534586}
+>>>>>>> Stashed changes
   m_Size:
-    m_Target: 2.4119544
+    m_Target: 8.535727
     speed: 2
-    m_Value: 2.4119544
+    m_Value: 8.535727
   m_Ortho:
     m_Target: 0
     speed: 2
