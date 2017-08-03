@@ -1,30 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< Updated upstream
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\HandMove.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Enermy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Characters.cs" Line="10" Column="2" />
-      <File FileName="Assets\Scripts\HandCol.cs" Line="14" Column="17" />
-=======
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enermy.cs">
     <Files>
-      <File FileName="Assets\Scripts\Enermy.cs" Line="105" Column="17" />
-      <File FileName="Assets\Scripts\Player.cs" Line="88" Column="35" />
-      <File FileName="Assets\Scripts\Characters.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HandCol.cs" Line="17" Column="4" />
->>>>>>> Stashed changes
-      <File FileName="Assets\Scripts\FrameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerCam.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BloodRepeatScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HandMove.cs" Line="17" Column="23" />
+      <File FileName="Assets\Scripts\Enermy.cs" Line="99" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Users\jun\Desktop\WE_Boxing\Assets\Assets\Scripts\EnermyState.cs" line="42" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
