@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Characters
+public class Player : Characters<Enermy>
 {
 	// 움직임 변수
 	public float mouseSensitivity = 2f;
@@ -42,21 +42,20 @@ public class Player : Characters
 		mAnim.SetBool ("Damaged", false);
 	}
 
-	public override void applyDamage(float damage){
+	public override void applyDamage(){
 		Player.OnPlayerAttack ();
-		print (this.name +" applied damage : " + Player.Power);
+		print (this.name +" applied damage : " + this.Damage);
 	}
 
-	public override void getDamage(float damage){
-	}
+	public override void getDamage(){ }
 
 	void OnTriggerEnter( Collider col ){
 
 		if ( col.transform.tag == "HandCol" ){
 			mAnim.SetBool ("Damaged", true);
-			//print (this.name +" get damaged : " + Player.Power);
+			//print (this.name +" get damaged : " + Player.Damage);
 			//Player.OnPlayerAttack ();
-			//col.transform.SendMessage ("applyDamage", Player.playerPower);
+			//col.transform.SendMessage ("applyDamage", Player.playerDamage);
 		}
 
 	}
@@ -65,19 +64,19 @@ public class Player : Characters
 		// 어택 모드 설정
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 			mAnim.SetInteger ("AttackMode", 1);
-			Power = hookDamage;
+			Damage = hookDamage;
 
 		} else if (Input.GetKeyDown (KeyCode.Alpha2)) {
 			mAnim.SetInteger ("AttackMode", 2);
-			Power = japDamage;
+			Damage = japDamage;
 
 		} else if (Input.GetKeyDown (KeyCode.Alpha3)) {
 			mAnim.SetInteger ("AttackMode", 3);
-			Power = upperDamage;
+			Damage = upperDamage;
 
 		} else if (Input.GetKeyDown (KeyCode.Alpha4)) {
 			mAnim.SetInteger ("AttackMode", 4);
-			Power = comboDamage;
+			Damage = comboDamage;
 		}
 
 		// 왼쪽 공격 설정

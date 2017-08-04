@@ -46,15 +46,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BloodRepeatScript.cs" />
-     <Compile Include="Assets\Scripts\Characters.cs" />
-     <Compile Include="Assets\Scripts\Enermy.cs" />
-     <Compile Include="Assets\Scripts\FrameManager.cs" />
-     <Compile Include="Assets\Scripts\HandCol.cs" />
-     <Compile Include="Assets\Scripts\HandMove.cs" />
-     <Compile Include="Assets\Scripts\ICharacters.cs" />
-     <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\PlayerCam.cs" />
+     <Compile Include="Assets\Scripts\Character\Characters.cs" />
+     <Compile Include="Assets\Scripts\Character\Enermy.cs" />
+     <Compile Include="Assets\Scripts\Character\HandCol_E.cs" />
+     <Compile Include="Assets\Scripts\Character\HandCol_P.cs" />
+     <Compile Include="Assets\Scripts\Character\ICharacters.cs" />
+     <Compile Include="Assets\Scripts\Character\Player.cs" />
+     <Compile Include="Assets\Scripts\Character\StateMachine.cs" />
+     <Compile Include="Assets\Scripts\Character\State_Attack.cs" />
+     <Compile Include="Assets\Scripts\Character\State_Die.cs" />
+     <Compile Include="Assets\Scripts\Character\State_FSM.cs" />
+     <Compile Include="Assets\Scripts\Character\State_Move.cs" />
+     <Compile Include="Assets\Scripts\UI\BloodRepeatScript.cs" />
+     <Compile Include="Assets\Scripts\UI\FrameManager.cs" />
+     <Compile Include="Assets\Scripts\UI\PlayerCam.cs" />
      <None Include="Assets\Textures\WB\keyframe_information.txt" />
      <None Include="Assets\ProjectSettings\ProjectVersion.txt" />
  <Reference Include="UnityEngine.UI">

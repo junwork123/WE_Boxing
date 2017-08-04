@@ -2,8 +2,8 @@
 
 public interface ICharacters
 {
-	void applyDamage(float Damage);
-	void getDamage(float Damage);
+	void applyDamage();
+	void getDamage();
 	void Attack();
 	void Move();
 	void Init();
