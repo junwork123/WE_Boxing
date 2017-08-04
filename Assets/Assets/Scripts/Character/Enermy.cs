@@ -25,6 +25,7 @@ public class Enermy : Characters<Player>
 		mNav.SetDestination (target.transform.position);
 
 		Player.OnPlayerAttack += this.OnPlayerAttack;
+
 	}
 
 	void Update () 
