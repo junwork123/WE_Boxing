@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class PlayerCam: MonoBehaviour {
+public class Crosshair: MonoBehaviour {
 
 	Ray mRay;
 	RaycastHit mHit;
+    float defaultPosZ;
 	public Camera mCamera;
 	public Canvas mCanvas;
 	public RawImage crossHair_blue;
@@ -16,19 +17,21 @@ public class PlayerCam: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		/*
-		Transform target = GameObject.Find ("Enermy").transform;
-		transform.LookAt (target);
-		*/
+        defaultPosZ = transform.localPosition.z;
 		setCrosshairColor ("blue");
 	}
 
 	void FixedUpdate(){
-		mRay = mCamera.ScreenPointToRay(Input.mousePosition);
+        mRay = new Ray(mCamera.transform.position, mCamera.transform.rotation * Vector3.forward);
 
 		if (Physics.Raycast(mRay, out mHit))
 		{
-			if (mHit.transform.tag == "Enermy") {
+            if (mHit.distance < defaultPosZ)
+                transform.localPosition = new Vector3(0, 0, mHit.distance);
+            else
+                transform.localPosition = new Vector3(0, 0, defaultPosZ);
+
+            if (mHit.transform.tag == "Enermy") {
 				// 이미지 클래스를 사용하려면 
 				// using UnityEngine.UI;를 추가해야함
 
