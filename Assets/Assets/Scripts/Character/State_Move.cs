@@ -52,21 +52,12 @@ public class State_Move : State_FSM<Enermy>
 		}
 		else
 		{
-			// 타겟이 없을 때는 임의의 방향으로 방황함
 			// 방향 재설정
-			SetRandDir(_Enermy);
-			//#if DEBUG
-			// 몬스터의 진행방향 표시
-			// 시각적으로 알기 쉽게 y좌표만 높여줌
-			Vector3 endPoint = _Enermy.transform.position + (_Enermy.transform.forward * 2f);
-			endPoint.y += 1f;
-			Debug.DrawLine(_Enermy.transform.position, endPoint, Color.red);
-			//Debug.Log("x : " + _Enermy.transform.forward.x + ", y : " + _Enermy.transform.forward.y + ", z : " + _Enermy.transform.forward.z);
-			//#endif
-			endPoint.y = 0;
+			//SetRandDir(_Enermy);
+			/*
 			Vector3 pos = _Enermy.transform.position;
 			pos += _Enermy.transform.forward * Time.smoothDeltaTime * (_Enermy.moveSpeed / 3f);
-			_Enermy.transform.position = pos;
+			_Enermy.transform.position = pos;*/
 		}
 		//_Enermy.Ani.CrossFade("Walk");
 	}
@@ -82,7 +73,8 @@ public class State_Move : State_FSM<Enermy>
 		CurrenntTime += Time.smoothDeltaTime;
 		if (CurrenntTime >= ResetTime)
 		{
-			_Enermy.transform.forward = Quaternion.AngleAxis(UnityEngine.Random.Range(-45.0f, 45.0f), Vector3.up) * Vector3.forward;
+			// 방향 재설정
+			_Enermy.transform.forward = Quaternion.AngleAxis(UnityEngine.Random.Range(-60.0f, 60.0f), Vector3.up) * Vector3.forward;
 			// 시간 재설정
 			ResetTime = UnityEngine.Random.Range(1f, 3f);
 			CurrenntTime = 0f;
@@ -99,7 +91,7 @@ public class State_Move : State_FSM<Enermy>
 		// 타겟과 너무 가깝지 않게 일정 거리를 유지한다
 		else if (_Enermy.mNav.remainingDistance <= _Enermy.mNav.stoppingDistance) {
 			_Enermy.mDir = Vector3.back;
-			_Enermy.mNav.Stop ();
+			//_Enermy.mNav.Stop ();
 		}
 		// 적정 거리라면 랜덤하게 움직인다
 		else {

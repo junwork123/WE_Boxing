@@ -86,6 +86,8 @@
      <Compile Include="Assets\Scripts\Character\HandCol_P.cs" />
      <Compile Include="Assets\Scripts\Character\ICharacters.cs" />
      <Compile Include="Assets\Scripts\Character\Player.cs" />
+     <Compile Include="Assets\Scripts\Character\PlayerBody.cs" />
+     <Compile Include="Assets\Scripts\Character\PlayerHead.cs" />
      <Compile Include="Assets\Scripts\Character\StateMachine.cs" />
      <Compile Include="Assets\Scripts\Character\State_Attack.cs" />
      <Compile Include="Assets\Scripts\Character\State_Die.cs" />

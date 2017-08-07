@@ -108,21 +108,13 @@ public class Player : Characters<Enermy>
 		float moveLR = Input.GetAxis ("Vertical");
 
 		mDir = new Vector3 (moveFB, 0, moveLR);
-		mDir = mCamera.transform.TransformDirection (mDir);
 		mRigidbody.AddForce (mDir * moveSpeed * Time.smoothDeltaTime, ForceMode.Force);
 		mRigidbody.velocity = mDir * moveSpeed;
 
 		mAnim.SetFloat ("moveFB", moveLR);
 		mAnim.SetFloat ("moveLR", moveFB);
 
-		//좌우 회전
-		rotationX = Input.GetAxis ("Mouse X") * mouseSensitivity + transform.localEulerAngles.y;
 
-		//상하 회전
-		rotationY += Input.GetAxis ("Mouse Y") * mouseSensitivity;
-		rotationY = Mathf.Clamp (rotationY, -upDownRange, upDownRange);
-
-		transform.localEulerAngles = new Vector3 (-rotationY, rotationX, 0f);
 	}
 
 }

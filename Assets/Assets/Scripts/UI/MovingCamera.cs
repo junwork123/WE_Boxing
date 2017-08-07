@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MovingCamera : MonoBehaviour {
 
-   public GameObject goCamera;
-   public GameObject Startbutton;
+    public GameObject goCamera;
+    public GameObject Startbutton;
     public GameObject Quitbutton;
     public GameObject Settingbutton;
+	bool isFirst = true; // 임시로 만든 시작변수
 
     // Use this for initialization
     void Start()
@@ -31,7 +32,14 @@ public class MovingCamera : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+		// 임시로 만든 시작기능
+		if (Input.anyKeyDown && isFirst == true) {
+			StartCoroutine ("PayRun");
+			Startbutton.gameObject.SetActive (false);
+			Quitbutton.gameObject.SetActive (false);
+			Settingbutton.gameObject.SetActive (false);
+			isFirst = false;
+		}
     }
     
     public void PressKey(int nKey)
