@@ -25,6 +25,7 @@ public class Characters<T> : MonoBehaviour, ICharacters
 	public virtual void Attack(){}
 	public virtual void Move(){}
 	public virtual void Init(){}
+	public virtual void Avoid(){}
 
 }
 

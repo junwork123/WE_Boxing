@@ -34,6 +34,7 @@ public class Player : Characters<Enermy>
 		Init();
 		Move ();
 		Attack ();
+		Avoid ();
 	} 
 
 	public override void Init() {
@@ -60,7 +61,26 @@ public class Player : Characters<Enermy>
 
 	}
 
+
+	public override void Move(){
+
+		float moveFB = Input.GetAxis ("Horizontal");
+		float moveLR = Input.GetAxis ("Vertical");
+
+		mDir = new Vector3 (moveFB, 0, moveLR);
+		transform.Translate (mDir * Time.smoothDeltaTime * moveSpeed);
+		//mRigidbody.AddForce (mDir * moveSpeed * Time.smoothDeltaTime, ForceMode.Force);
+		//mRigidbody.velocity = mDir * moveSpeed;
+
+		mAnim.SetFloat ("moveFB", moveLR);
+		mAnim.SetFloat ("moveLR", moveFB);
+
+	}
+
+
 	public override void Attack(){
+
+		Avoid ();
 		// 어택 모드 설정
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 			mAnim.SetInteger ("AttackMode", 1);
@@ -78,6 +98,8 @@ public class Player : Characters<Enermy>
 			mAnim.SetInteger ("AttackMode", 4);
 			Damage = comboDamage;
 		}
+
+
 
 		// 왼쪽 공격 설정
 		if (Input.GetMouseButton (0)) { 
@@ -102,18 +124,36 @@ public class Player : Characters<Enermy>
 			
 	}
 
-	public override void Move(){
-		
-		float moveFB = Input.GetAxis ("Horizontal");
-		float moveLR = Input.GetAxis ("Vertical");
+	public override void Avoid(){
 
-		mDir = new Vector3 (moveFB, 0, moveLR);
-		transform.Translate (mDir * Time.smoothDeltaTime * moveSpeed);
-		//mRigidbody.AddForce (mDir * moveSpeed * Time.smoothDeltaTime, ForceMode.Force);
-		//mRigidbody.velocity = mDir * moveSpeed;
 
-		mAnim.SetFloat ("moveFB", moveLR);
-		mAnim.SetFloat ("moveLR", moveFB);
+		if (Input.GetKey (KeyCode.Q)) {
+			mAnim.SetBool ("guard", true);
+
+		} else if (Input.GetKey (KeyCode.E)) {
+			mAnim.SetBool ("dodge", true);
+
+
+		} else if (Input.GetKey (KeyCode.R)) {
+			mAnim.SetBool ("weaving", true);
+
+
+		}
+
+		if (Input.GetKey (KeyCode.Q | KeyCode.E | KeyCode.R)){
+			mAnim.SetBool ("Left", false);
+			mHand_L.enabled = false;
+
+			mAnim.SetBool ("Right", false);
+			mHand_R.enabled = false;
+		} else{
+			mAnim.SetBool ("guard", false);
+			mAnim.SetBool ("dodge", false);
+			mAnim.SetBool ("crouch", false);
+			mAnim.SetBool ("weaving", false);
+
+		}
+
 
 
 	}
