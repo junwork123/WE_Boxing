@@ -108,8 +108,9 @@ public class Player : Characters<Enermy>
 		float moveLR = Input.GetAxis ("Vertical");
 
 		mDir = new Vector3 (moveFB, 0, moveLR);
-		mRigidbody.AddForce (mDir * moveSpeed * Time.smoothDeltaTime, ForceMode.Force);
-		mRigidbody.velocity = mDir * moveSpeed;
+		transform.Translate (mDir * Time.smoothDeltaTime * moveSpeed);
+		//mRigidbody.AddForce (mDir * moveSpeed * Time.smoothDeltaTime, ForceMode.Force);
+		//mRigidbody.velocity = mDir * moveSpeed;
 
 		mAnim.SetFloat ("moveFB", moveLR);
 		mAnim.SetFloat ("moveLR", moveFB);

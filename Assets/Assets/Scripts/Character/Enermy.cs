@@ -10,10 +10,9 @@ public class Enermy : Characters<Player>
 	public Vector3 mDir;
 	public UnityEngine.AI.NavMeshAgent mNav;
 
-	public float ChaseTime = 0;
-	public float ChaseCancleTime = 5;
-	int attackMode;
-	int attackDir;
+
+	public float attackDistance = 1.1f;
+	float attackDir = 0.5f;
 	bool isHolding = false;
 
 	Enermy(){}
@@ -42,16 +41,17 @@ public class Enermy : Characters<Player>
 		mState.Initial_Setting (this, State_Move.Instance);
 	}
 
-	// 공격 가능한 거리인지 체크
-	public bool CheckRange(){
-		if (Vector3.Dot (target.transform.position, transform.position) <= 1.0f)
+	// 공격 가능한 각도인지 체크
+	// 내적값이 0.5보다 크면 정면
+	public bool CheckAngle(){
+		if (Vector3.Dot (target.transform.position, transform.position) < attackDir)
 			return true;
 		else
 			return false;
 	}
-	// 내적값이 0.5보다 크면 정면
-	public bool CheckAngle(){
-		if (Vector3.Distance (target.transform.position, transform.position) <= 1.0f)
+	// 공격 가능한 거리인지 체크
+	public bool CheckDistance(){
+		if (Vector3.Distance (target.transform.position, transform.position) < attackDistance)
 			return true;
 		else
 			return false;
