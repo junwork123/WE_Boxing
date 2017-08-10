@@ -13,7 +13,7 @@ public class BloodRepeatScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Player.OnPlayerAttack += this.OnPlayerAttack;
+		PlayerDelig.OnAttack += this.OnPlayerAttack;
 		mPos = transform.localPosition;
 		mPos.y = 2.5f;
 

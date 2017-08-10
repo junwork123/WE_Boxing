@@ -19,9 +19,6 @@ public class Characters<T> : MonoBehaviour, ICharacters
 
 	public T target;
 
-	public virtual void Start(){}
-	public virtual void applyDamage(){}
-	public virtual void getDamage(){}
 	public virtual void Attack(){}
 	public virtual void Move(){}
 	public virtual void Init(){}

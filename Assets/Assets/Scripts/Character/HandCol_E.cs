@@ -15,7 +15,7 @@ public class HandCol_E : MonoBehaviour {
 	{
 		//적과 부딪힐때만 충돌처리 일어나도록 처리
 		if (col.tag == opponent.tag)
-			me.applyDamage ();
+			opponent.mDelig.getDamage ();
 
 	}
 }

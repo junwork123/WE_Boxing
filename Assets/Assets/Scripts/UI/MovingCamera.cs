@@ -50,6 +50,7 @@ public class MovingCamera : MonoBehaviour {
         switch (nKey)
         {
             case 1: //start
+				Cursor.lockState = CursorLockMode.Locked;
                 StartCoroutine("PayRun");
                 Startbutton.gameObject.SetActive(false);
                 Quitbutton.gameObject.SetActive(false);

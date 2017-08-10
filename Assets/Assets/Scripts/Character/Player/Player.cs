@@ -6,7 +6,7 @@ public class Player : Characters<Enermy>
 {
 	// 움직임 변수
 	public float mouseSensitivity = 2f;
-	public float upDownRange= 30;
+	public float upDownRange = 30;
 
 	private float rotationX;
 	private float rotationY;
@@ -14,19 +14,11 @@ public class Player : Characters<Enermy>
 	public Vector3 mDir;
 	public Camera mCamera;
 
-
 	// 델리게이트 
-	public delegate void PlayerAttackHandler();
-	public static event PlayerAttackHandler OnPlayerAttack;
+	public PlayerDelig mDelig;
 
-	Player(){}
-
-	public override void Start(){
-		mCamera = GetComponentInChildren<Camera> ();
+	public void Start(){
 		mAnim.SetInteger ("AttackMode", 1);
-
-		Cursor.lockState = CursorLockMode.Locked;
-
 	}
 
 	void FixedUpdate () 
@@ -36,20 +28,10 @@ public class Player : Characters<Enermy>
 		Attack ();
 	} 
 
-	public override void applyDamage(){
-		Player.OnPlayerAttack ();
-		print (this.name +" applied damage : " + this.Damage);
-	}
-
-	public override void getDamage(){ }
-
 	void OnTriggerEnter( Collider col ){
 
 		if ( col.transform.tag == "HandCol" ){
-			mAnim.SetBool ("Damaged", true);
-			//print (this.name +" get damaged : " + Player.Damage);
-			//Player.OnPlayerAttack ();
-			//col.transform.SendMessage ("applyDamage", Player.playerDamage);
+			//mDelig.getDamage ();
 		}
 
 	}
