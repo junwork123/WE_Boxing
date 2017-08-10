@@ -60,6 +60,7 @@
      <None Include="Assets\OVR\Resources\Unlit Transparent Color.shader" />
      <None Include="Assets\OVR\Resources\Underlay Transparent Occluder.shader" />
      <None Include="Assets\OVR\Resources\Alpha Premultiply.shader" />
+     <None Include="Assets\Myo\README-MyoUnity.txt" />
      <None Include="Assets\OVR\Resources\OVRMRCameraFrame.shader" />
      <None Include="Assets\OVR\Resources\OVRMRClipPlane.shader" />
      <None Include="Assets\OVR\Resources\Underlay Impostor.shader" />
