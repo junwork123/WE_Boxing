@@ -18,32 +18,46 @@ public class EnermyDelig : CharacterDelig
 	public override void getDamage(){
 		print (_Enermy.name +" get damage");
 
-		if (_Enermy.isHolding == false) {
+		// 뒤로 밀림
+		_Enermy.mRigidbody.AddForce (Vector3.back, ForceMode.Impulse);
+		// HP 감소
+		_Enermy.HP -= _Enermy.target.Damage;
 
-			_Enermy.isHolding = true;
-			_Enermy.mCorutine = Holding ();
+		if (_Enermy.HP > 1) {
+
+			_Enermy.isUnBeatTime = true;
+			_Enermy.mAnim.SetBool ("Damaged", true);
+			_Enermy.mCorutine = UnBeatTime ();
 			StartCoroutine (_Enermy.mCorutine);
 		}
-	
+
 	}
 
 	// 코루틴 함수
-	IEnumerator Holding(){
+	IEnumerator UnBeatTime(){
 
-		float ratio1 = 0.2f;
-		float ratio2 = 0.3f;
-		float countTime = _Enermy.mAnim.GetCurrentAnimatorClipInfo(0).Length;
+		/*
+		int countTime = 0;
+		while (countTime < 2) {
 
-		// ratio1 비율까지 기다렸다가 파라미터 변경
-		yield return new WaitForSeconds(countTime * ratio1);
-		_Enermy.mAnim.SetBool ("Damaged", true);
+			if (countTime % 2 == 0)
+				_Enermy.mRender.material.color = Color.blue;//new Color32 (255, 255, 255, 90);
+			else
+				_Enermy.mRender.material.color = Color.red;// (255, 255, 255, 180);
 
-		// ratio2비율까지 기다렸다가 HP감소, 메시지 출력, 홀딩 상태 변경
-		yield return new WaitForSeconds(countTime * ratio2);
-		_Enermy.HP -= _Enermy.target.Damage;
-		_Enermy.isHolding = false;
+			yield return new WaitForSeconds (0.1f);
 
-		StopCoroutine (_Enermy.mCorutine);
+			countTime++;
+		}*/
+
+		_Enermy.mRender.material.color = Color.red;// (255, 255, 255, 180);
+		yield return new WaitForSeconds (0.1f);
+
+		_Enermy.mRender.material.color = new Color32 (255, 255, 255, 255);
+		_Enermy.isUnBeatTime = false;
+		_Enermy.mAnim.SetBool ("Damaged", false);
+		yield return null;
+
 	}
 }
 

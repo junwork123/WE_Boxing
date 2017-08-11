@@ -10,10 +10,11 @@ public class Enermy : Characters<Player>
 	public Vector3 mDir;
 	public UnityEngine.AI.NavMeshAgent mNav;
 	public EnermyDelig mDelig;
+	public SkinnedMeshRenderer mRender;
 
 	public float attackDistance = 1.1f;
 	public float attackDir = 0.5f;
-	public bool isHolding = false;
+	public bool isUnBeatTime = false;
 
 	// Use this for initialization
 	public void Start () {
@@ -42,7 +43,7 @@ public class Enermy : Characters<Player>
 	}
 
 	// 공격 가능한 각도인지 체크
-	// 내적값이 0.5보다 크면 정면
+	// 내적값이 0.5보다 작으면 정면
 	public bool CheckAngle(){
 		if (Vector3.Dot (target.transform.position, transform.position) < attackDir)
 			return true;

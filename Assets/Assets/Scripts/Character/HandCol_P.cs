@@ -14,8 +14,9 @@ public class HandCol_P : MonoBehaviour {
 	void OnTriggerEnter(Collider col)
 	{
 		//적과 부딪힐때만 충돌처리 일어나도록 처리
-		if (col.tag == opponent.tag)
+		if (col.tag == opponent.tag && opponent.isUnBeatTime == false) {
 			opponent.mDelig.getDamage ();
-
+		}
 	}
+
 }
