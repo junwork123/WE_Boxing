@@ -22,7 +22,11 @@ public class State_Die : State_FSM<Enermy>
 	public override void UpdateState(Enermy _Enermy)
 	{
 		time += Time.deltaTime;
+		_Enermy.mAnim.SetBool ("Left", false);
+		_Enermy.mAnim.SetBool ("Right", false);
+		_Enermy.mAnim.SetBool ("guard", false);
 		_Enermy.mAnim.SetBool ("isDead", true);
+
 		if( _Enermy.isActiveAndEnabled && time >= Count)
 		{
 			_Enermy.gameObject.SetActive(false);
