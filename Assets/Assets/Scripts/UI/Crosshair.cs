@@ -10,10 +10,10 @@ public class Crosshair: MonoBehaviour {
 	RaycastHit mHit;
     float defaultPosZ;
 	public Camera mCamera;
-	public Canvas mCanvas;
 	public RawImage crossHair_blue;
 	public RawImage crossHair_red;
 	public RawImage crossHair_yellow;
+	GameObject CurrentGaze;
 
 	// Use this for initialization
 	void Start () {
@@ -31,18 +31,25 @@ public class Crosshair: MonoBehaviour {
             else
                 transform.localPosition = new Vector3(0, 0, defaultPosZ);
 
-            if (mHit.transform.tag == "Enermy") {
+			if (mHit.transform.tag == "Enermy") {
 				// 이미지 클래스를 사용하려면 
 				// using UnityEngine.UI;를 추가해야함
 
 				setCrosshairColor ("red");
-				// blue -> 진하게
-				// red -> 너무 어두움
-				// yellow -> 초록색
 				 
-			}else
+			} else if (mHit.transform.tag == "UI") {
+
+				setCrosshairColor ("yellow");
+
+				CurrentGaze = mHit.collider.gameObject;
+				CurrentGaze.SendMessage ("OnGazeEnter", SendMessageOptions.DontRequireReceiver);
+				//SendMessage ("OnHitInfo", mHit, SendMessageOptions.DontRequireReceiver);
+			} else {
 				setCrosshairColor ("blue");
-				
+				if( CurrentGaze != null )
+					CurrentGaze.SendMessage ("OnGazeExit", SendMessageOptions.DontRequireReceiver);
+
+			}
 		}
 
 

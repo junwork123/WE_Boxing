@@ -8,15 +8,27 @@ public class MovingCamera : MonoBehaviour {
     public GameObject Startbutton;
     public GameObject Quitbutton;
     public GameObject Settingbutton;
-	bool isFirst = true; // 임시로 만든 시작변수
+
+	public Canvas startCanvas;
+	public Canvas settingCanvas;
+	public CanvasGroup startCanvasG;
+	public CanvasGroup settingCanvasG;
+
+	const int ON = 1;
+	const int OFF = 0;
 
     // Use this for initialization
     void Start()
     {
-        //StartCoroutine("PayRun");
+		startCanvasG.alpha = 1;
+		startCanvas.enabled = true;
+
+		settingCanvasG.alpha = 0;
+		settingCanvas.enabled = false;
+		//StartCoroutine("StartGame");
     }
 
-    IEnumerator PayRun()
+    IEnumerator StartGame()
     {
         yield return new WaitForSeconds(0.3f);
         Camera.allCameras[4].depth = 6;
@@ -32,43 +44,56 @@ public class MovingCamera : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-		// 임시로 만든 시작기능
-		if (Input.anyKeyDown && isFirst == true) {
-			StartCoroutine ("PayRun");
-			Startbutton.gameObject.SetActive (false);
-			Quitbutton.gameObject.SetActive (false);
-			Settingbutton.gameObject.SetActive (false);
-			isFirst = false;
-		}
+		if (Input.GetKeyDown (KeyCode.Alpha1))
+			PressButton (1);
+		if (Input.GetKeyDown (KeyCode.Alpha2))
+			PressButton (2);
+		if (Input.GetKeyDown (KeyCode.Alpha3))
+			PressButton (3);
+		if (Input.GetKeyDown (KeyCode.Alpha4))
+			PressButton (4);
     }
     
-    public void PressKey(int nKey)
+    public void PressButton(int number)
     {
         //처음 데이터 받기
         Vector3 rectTemp = this.goCamera.transform.localPosition;
 
-        switch (nKey)
+		switch (number)
         {
-            case 1: //start
-				Cursor.lockState = CursorLockMode.Locked;
-                StartCoroutine("PayRun");
-                Startbutton.gameObject.SetActive(false);
-                Quitbutton.gameObject.SetActive(false);
-                Settingbutton.gameObject.SetActive(false);
+		case 1: //start button
+			Cursor.lockState = CursorLockMode.Locked;
+			StartCoroutine ("StartGame");
+			OnOff (startCanvas, startCanvasG, OFF);// 스타트 캔버스 hide
                 break;
-            case 2: //up, quit
-                Startbutton.gameObject.SetActive(false);
-                Quitbutton.gameObject.SetActive(false);
-                Settingbutton.gameObject.SetActive(false);
+		case 2: //setting button
+			OnOff (startCanvas, startCanvasG, OFF); // 스타트 캔버스 hide
+			OnOff (settingCanvas, settingCanvasG, ON);// 세팅 캔버스 reveal
                 break;
-            case 3: //right, setting
-                Startbutton.gameObject.SetActive(false);
-                Quitbutton.gameObject.SetActive(false);
-                Settingbutton.gameObject.SetActive(false);
+		case 3: //quit button
+			OnOff (startCanvas, startCanvasG, OFF);
+			OnOff (settingCanvas, settingCanvasG, OFF);
+			// @#@ 종료 코드 삽입
                 break;
+
+		case 4: //back button
+			OnOff (startCanvas, startCanvasG, ON);
+			OnOff (settingCanvas, settingCanvasG, OFF);
+				break;
         }
 
         //완성된 데이터 저장
         this.goCamera.transform.localPosition = rectTemp;
     }
+
+	public void OnOff(Canvas canvas, CanvasGroup canvasG, int FLAG){
+
+		if (FLAG == ON)
+			canvasG.alpha = ON;
+		else
+			canvasG.alpha = OFF;
+
+		canvas.enabled = !canvas.enabled;
+
+	}
 }
