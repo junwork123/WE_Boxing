@@ -42,6 +42,7 @@ public class MovingCamera : MonoBehaviour {
         yield return new WaitForSeconds(1);
         Camera.allCameras[0].depth = 10;
 
+		Debug.Log (this.ToString());
 		StopCoroutine (StartGame());
     }
 	/*
@@ -71,7 +72,8 @@ public class MovingCamera : MonoBehaviour {
 
 			OnOff (startCanvas, startCanvasG, OFF);// 스타트 캔버스 hide
 			OnOff (settingCanvas, settingCanvasG, OFF);// 스타트 캔버스 hide
-			StartCoroutine ("StartGame");
+			goCamera.SetActive(false);
+			//StartCoroutine ("StartGame");
 
                 break;
 		case 2: //setting button

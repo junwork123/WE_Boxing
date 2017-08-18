@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerBody : MonoBehaviour {
 
-	public PlayerHead head;
 	public Transform tranformCam;
 	public Transform tranformBody;
 
+
 	// Use this for initialization
 	void Start () {
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		// 카메라가 바라보는 방향으로

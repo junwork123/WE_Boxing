@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlayerHead : MonoBehaviour
 {
-	public float velocity = 0.7f;
-	public Camera mCamera;
-	public bool isMoving;
+	public Transform tranformCam;
 
-	void Update(){
-		// 카메라 방향에 따라
-		Vector3 moveDirection = mCamera.transform.forward;
-		moveDirection *= velocity * Time.deltaTime;
-		moveDirection.y = 0.0f;
+	// Use this for initialization
+	void Start () {
+	}
+
+	// Update is called once per frame
+	void Update () {
+		// 카메라가 바라보는 방향으로
+		// y축 기준 회전
+		tranformCam.transform.position = new Vector3(0f, 0f, 0f);
+
 	}
 }
 
