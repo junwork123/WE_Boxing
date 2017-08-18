@@ -9,19 +9,34 @@ public class Crosshair: MonoBehaviour {
 	Ray mRay;
 	RaycastHit mHit;
     float defaultPosZ;
-	public Camera mCamera;
+	public Camera startCamera;
+	public Camera playerCamera;
+	Camera mCamera;
 	public RawImage crossHair_blue;
 	public RawImage crossHair_red;
 	public RawImage crossHair_yellow;
 	GameObject CurrentGaze;
+	public static bool isStarted;
 
 	// Use this for initialization
 	void Start () {
         defaultPosZ = transform.localPosition.z;
 		setCrosshairColor ("blue");
+		mCamera = startCamera;
 	}
+	/*
+	void OnDrawGizmos()
+	{
+		Gizmos.DrawLine(mCamera.transform.position, mCamera.transform.position + mCamera.transform.forward * 1000f);
+		//테스트용 기즈모 그리기. 기즈모라는 것은 Raycast에서의 가상의 광선을 실제로 보여주는 역할을 합니다.
+	}*/
 
 	void FixedUpdate(){
+		if (isStarted == true)
+			mCamera = playerCamera;
+		else
+			mCamera = startCamera; // 게임 재시작 시 false로 바꿔줘야 함 
+		
         mRay = new Ray(mCamera.transform.position, mCamera.transform.rotation * Vector3.forward);
 
 		if (Physics.Raycast(mRay, out mHit))

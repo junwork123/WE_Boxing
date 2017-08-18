@@ -30,6 +30,7 @@ public class MovingCamera : MonoBehaviour {
 
     IEnumerator StartGame()
     {
+		
         yield return new WaitForSeconds(0.3f);
         Camera.allCameras[4].depth = 6;
         yield return new WaitForSeconds(1);
@@ -40,7 +41,10 @@ public class MovingCamera : MonoBehaviour {
         Camera.allCameras[1].depth = 9;
         yield return new WaitForSeconds(1);
         Camera.allCameras[0].depth = 10;
+
+		StopCoroutine (StartGame());
     }
+	/*
     // Update is called once per frame
     void Update()
     {
@@ -53,18 +57,22 @@ public class MovingCamera : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Alpha4))
 			PressButton (4);
     }
-    
+    */
     public void PressButton(int number)
     {
-        //처음 데이터 받기
-        Vector3 rectTemp = this.goCamera.transform.localPosition;
 
 		switch (number)
         {
 		case 1: //start button
+			Crosshair.isStarted = true;
+			//goCamera.SetActive (false);
+
 			Cursor.lockState = CursorLockMode.Locked;
-			StartCoroutine ("StartGame");
+
 			OnOff (startCanvas, startCanvasG, OFF);// 스타트 캔버스 hide
+			OnOff (settingCanvas, settingCanvasG, OFF);// 스타트 캔버스 hide
+			StartCoroutine ("StartGame");
+
                 break;
 		case 2: //setting button
 			OnOff (startCanvas, startCanvasG, OFF); // 스타트 캔버스 hide
@@ -82,18 +90,18 @@ public class MovingCamera : MonoBehaviour {
 				break;
         }
 
-        //완성된 데이터 저장
-        this.goCamera.transform.localPosition = rectTemp;
     }
 
 	public void OnOff(Canvas canvas, CanvasGroup canvasG, int FLAG){
 
-		if (FLAG == ON)
+		if (FLAG == ON) {
 			canvasG.alpha = ON;
-		else
+			canvas.enabled = true;
+		} else {
 			canvasG.alpha = OFF;
-
-		canvas.enabled = !canvas.enabled;
+			canvas.enabled = false;
+		}
 
 	}
+
 }
