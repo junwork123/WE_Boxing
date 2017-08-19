@@ -8,6 +8,9 @@ public class Player : Characters<Enermy>
 	public float mouseSensitivity = 2f;
 	public float upDownRange = 30;
 
+	float Count = 5f;
+	float time = 0f;
+
 	private float rotationX;
 	private float rotationY;
 
@@ -19,13 +22,30 @@ public class Player : Characters<Enermy>
 
 	public void Start(){
 		mAnim.SetInteger ("AttackMode", 1);
+		this.gameObject.SetActive (false);
 	}
 
-	void FixedUpdate () 
+	void Update () 
 	{ 
-		Init ();
-		Move ();
-		Attack ();
+		if (this.HP > 0 && this.gameObject.activeSelf == true ) {
+			Move ();
+			Attack ();
+		} else {
+			if (mAnim.GetBool ("isDead") == false) {
+				mAnim.SetBool ("isDead", true);
+				mAnim.SetBool ("Left", false);
+				mAnim.SetBool ("Right", false);
+				mAnim.SetBool ("guard", false);
+			}
+			else {
+				time += Time.deltaTime;
+
+				if (isActiveAndEnabled && time >= Count) {
+					this.gameObject.SetActive (false);
+					time = 0f;
+				}
+			}
+		}
 	} 
 
 	void OnTriggerEnter( Collider col ){

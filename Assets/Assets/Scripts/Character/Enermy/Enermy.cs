@@ -25,12 +25,14 @@ public class Enermy : Characters<Player>
 		ResetState ();
 		//mCorutine = Holding ();		
 		mNav.SetDestination (target.transform.position);
+		this.gameObject.SetActive (false);
 
 	}
 
 	void Update () 
 	{ 
-		mState.Update ();
+		if( this.gameObject.activeSelf == true )
+			mState.Update ();
 	} 
 
 	public void ChangeState(State_FSM<Enermy> _state){

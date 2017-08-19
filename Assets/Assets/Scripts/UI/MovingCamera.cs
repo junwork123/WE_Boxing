@@ -14,6 +14,9 @@ public class MovingCamera : MonoBehaviour {
 	public CanvasGroup startCanvasG;
 	public CanvasGroup settingCanvasG;
 
+	public Player player;
+	public Enermy enermy;
+
 	const int ON = 1;
 	const int OFF = 0;
 
@@ -72,6 +75,8 @@ public class MovingCamera : MonoBehaviour {
 			OnOff (startCanvas, startCanvasG, OFF);// 스타트 캔버스 hide
 			OnOff (settingCanvas, settingCanvasG, OFF);// 스타트 캔버스 hide
 			goCamera.SetActive (false);
+			player.gameObject.SetActive (false);
+			enermy.gameObject.SetActive (false);
 			//StartCoroutine ("StartGame");
 
 			break;
