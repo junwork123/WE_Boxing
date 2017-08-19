@@ -62,8 +62,7 @@ public class MovingCamera : MonoBehaviour {
     public void PressButton(int number)
     {
 
-		switch (number)
-        {
+		switch (number) {
 		case 1: //start button
 			Crosshair.isStarted = true;
 			//goCamera.SetActive (false);
@@ -72,26 +71,26 @@ public class MovingCamera : MonoBehaviour {
 
 			OnOff (startCanvas, startCanvasG, OFF);// 스타트 캔버스 hide
 			OnOff (settingCanvas, settingCanvasG, OFF);// 스타트 캔버스 hide
-			goCamera.SetActive(false);
+			goCamera.SetActive (false);
 			//StartCoroutine ("StartGame");
 
-                break;
-		case 2: //setting button
+			break;
+		case 2: // setting button
 			OnOff (startCanvas, startCanvasG, OFF); // 스타트 캔버스 hide
 			OnOff (settingCanvas, settingCanvasG, ON);// 세팅 캔버스 reveal
-                break;
-		case 3: //quit button
+			break;
+		case 3: // quit button
 			OnOff (startCanvas, startCanvasG, OFF);
 			OnOff (settingCanvas, settingCanvasG, OFF);
 			// @#@ 종료 코드 삽입
-                break;
+			break;
 
-		case 4: //back button
+		case 4: // back button
 			OnOff (startCanvas, startCanvasG, ON);
 			OnOff (settingCanvas, settingCanvasG, OFF);
-				break;
-        }
-
+			break;
+			
+		}
     }
 
 	public void OnOff(Canvas canvas, CanvasGroup canvasG, int FLAG){

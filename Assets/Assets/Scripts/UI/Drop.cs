@@ -19,13 +19,15 @@ public class Drop : MonoBehaviour
         ports = SerialPort.GetPortNames();
         //clear/remove all option item
         Maindropdown.options.Clear();
-        //fill the dropdown menu OptionData with all COM's Name in ports[]
-        //Maindropdown.options.Add(new Dropdown.OptionData() { text = "null" });
-        //
+		List<Dropdown.OptionData> names = new List<Dropdown.OptionData> ();
+
         foreach (string c in ports)
         {
-            Maindropdown.options.Add(new Dropdown.OptionData() { text = c });
+			Dropdown.OptionData name = new Dropdown.OptionData (c);
+			names.Add (name);
         }
+
+		Maindropdown.AddOptions(names);
         //this swith from 1 to 0 is only to refresh the visual DdMenu
        // Maindropdown.value = 1;
         //Maindropdown.value = 0;
@@ -33,30 +35,49 @@ public class Drop : MonoBehaviour
     void Update()
 	{
 		//COM port Name that is currently selected on the dropDown Menu
+
+		/*
+		ports_state ();
+
 		if (Maindropdown.value > 0) {
 			text.text = ports [Maindropdown.value];
+			foreach (string c in ports)
+			{
+				Maindropdown.options.Add(new Dropdown.OptionData() { text = c });
+			}
 			ports_state ();
 		} else
 			text.text = null;
-
+		*/
 
     }
 
 	void ports_state(){
+		/*
 		if (!sp.IsOpen) {
 			button.SetActive (true);
 		} else {
 			button.SetActive (false);
-		}
+		}*/
 	}
+
+	public void mySelect(){
+		Maindropdown.Show ();
+		Debug.Log (Maindropdown.options.Count);
+	}
+
 	public void Isopen(){
-		Debug.Log ("just click!!");
-		string test_text = ports[Maindropdown.value];
-		Debug.Log (test_text);
-		Debug.Log (sp.IsOpen ? "true" : "false");
+
+		string test_text = ports [Maindropdown.value];
+
+		/*
+		if (Maindropdown.value > 0)
+			test_text = ports [Maindropdown.value];
+		else
+			test_text = "No Devices";*/
+		
 		if (!sp.IsOpen) {
 			sp.PortName = test_text;
-			Debug.Log ("just ***!!");
 			Debug.Log (sp.PortName);
 			sp.BaudRate = 115200;
 			sp.RtsEnable = true;
@@ -67,6 +88,8 @@ public class Drop : MonoBehaviour
 				sp.Open ();
 			} catch{
 				Debug.Log ("error");
+			} finally{
+				Debug.Log ("Connected " + sp.PortName);
 			}
 		}
 	}
