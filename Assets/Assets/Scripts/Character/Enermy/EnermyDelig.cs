@@ -19,7 +19,7 @@ public class EnermyDelig : CharacterDelig
 		print (_Enermy.name +" get damage");
 
 		// 뒤로 밀림
-		_Enermy.mRigidbody.AddForce (Vector3.back, ForceMode.Impulse);
+		//_Enermy.mRigidbody.AddForce (Vector3.back, ForceMode.Impulse);
 		// HP 감소
 		_Enermy.HP -= _Enermy.target.Damage;
 

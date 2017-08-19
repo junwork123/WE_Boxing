@@ -16,6 +16,8 @@ public class Player : Characters<Enermy>
 
 	public Vector3 mDir;
 	public Camera mCamera;
+	public bool isUnBeatTime = false;
+	public IEnumerator mCorutine;
 
 	// 델리게이트 
 	public PlayerDelig mDelig;

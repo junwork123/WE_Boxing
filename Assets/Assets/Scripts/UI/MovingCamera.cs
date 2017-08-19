@@ -87,7 +87,7 @@ public class MovingCamera : MonoBehaviour {
 		case 3: // quit button
 			OnOff (startCanvas, startCanvasG, OFF);
 			OnOff (settingCanvas, settingCanvasG, OFF);
-			// @#@ 종료 코드 삽입
+			Application.Quit ();
 			break;
 
 		case 4: // back button
