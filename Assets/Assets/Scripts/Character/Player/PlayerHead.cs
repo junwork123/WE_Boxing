@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class PlayerHead : MonoBehaviour
 {
-	public Transform tranformCam;
+	public GameObject head;
+	public GameObject VRCam;
+	public GameObject headPos;
 
 	// Use this for initialization
 	void Start () {
+		/*
+		VRCam = Instantiate (VRCam, headPos.transform.position, headPos.transform.rotation);
+		headPos.transform.SetParent (head.transform, false);
+		VRCam.transform.SetParent (headPos.transform, false);*/
 	}
-
-	// Update is called once per frame
-	void Update () {
-		// 카메라가 바라보는 방향으로
-		// y축 기준 회전
-		tranformCam.transform.position = new Vector3(0f, 0f, 0f);
-
+	void Update(){
+		VRCam.transform.position = new Vector3 (VRCam.transform.position.x, VRCam.transform.position.y, VRCam.transform.position.z);
 	}
 }
 
