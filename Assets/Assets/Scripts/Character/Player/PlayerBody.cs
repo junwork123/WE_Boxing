@@ -18,7 +18,7 @@ public class PlayerBody : MonoBehaviour {
 	void Update () {
 		// 카메라가 바라보는 방향으로
 		// y축 기준 회전
-		tranformBody.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, tranformCam.transform.eulerAngles.y, 0.0f));
+		//tranformBody.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, tranformCam.transform.eulerAngles.y, 0.0f));
 		/*
 		Vector3 prePosition = new Vector3 (tranformCam.transform.eulerAngles.x, 0.0f, tranformCam.transform.eulerAngles.z);
 			

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO.Ports;
 
-public class Drop : MonoBehaviour
+public class ArduInput : MonoBehaviour
 {
     public Dropdown Maindropdown;
     public Text text;
@@ -68,13 +68,13 @@ public class Drop : MonoBehaviour
 
 	public void Isopen(){
 
-		string test_text = ports [Maindropdown.value];
+		string test_text; // = ports [Maindropdown.value];
 
-		/*
-		if (Maindropdown.value > 0)
+
+		if (Maindropdown.value >= 0)
 			test_text = ports [Maindropdown.value];
 		else
-			test_text = "No Devices";*/
+			test_text = "No Devices";
 		
 		if (!sp.IsOpen) {
 			sp.PortName = test_text;

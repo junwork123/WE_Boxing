@@ -107,10 +107,10 @@
      <Compile Include="Assets\Scripts\Character\Player\PlayerDelig.cs" />
      <Compile Include="Assets\Scripts\Character\Player\PlayerHead.cs" />
      <Compile Include="Assets\Scripts\Character\Player\PlayerInput.cs" />
+     <Compile Include="Assets\Scripts\UI\ArduInput.cs" />
      <Compile Include="Assets\Scripts\UI\BloodRepeatScript.cs" />
      <Compile Include="Assets\Scripts\UI\CameraShaker.cs" />
      <Compile Include="Assets\Scripts\UI\Crosshair.cs" />
-     <Compile Include="Assets\Scripts\UI\Drop.cs" />
      <Compile Include="Assets\Scripts\UI\FrameManager.cs" />
      <Compile Include="Assets\Scripts\UI\HPBar\Margin.cs" />
      <Compile Include="Assets\Scripts\UI\HPBar\MonoDockList.cs" />

@@ -5,14 +5,13 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour {
 
 	public Player _player;
-	public ThalmicMyo _myoLeft;
-	public ThalmicMyo _myoRight;
+	public ArduInput _LeftInput;
+	public ArduInput _RightInput;
 	public Vector3 first;
 	public Vector3 second;
 
 	// Use this for initialization
 	void Start () {
-
 	}
 
 	// Update is called once per frame
@@ -65,13 +64,14 @@ public class PlayerInput : MonoBehaviour {
 			_player.mAnim.SetBool ("Left", true);
 			_player.mAnim.SetBool ("Right", false);
 
-			// 오른쪽 공격 설정 
+			_LeftInput.punch ();
 		} 
-
+		// 오른쪽 공격 설정 
 		if (Input.GetMouseButton (1)) { 
 			_player.mAnim.SetBool ("Left", false);
 			_player.mAnim.SetBool ("Right", true);
 
+			_LeftInput.shoot ();
 		}
 
 	}

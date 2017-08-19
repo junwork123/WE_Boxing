@@ -75,8 +75,8 @@ public class MovingCamera : MonoBehaviour {
 			OnOff (startCanvas, startCanvasG, OFF);// 스타트 캔버스 hide
 			OnOff (settingCanvas, settingCanvasG, OFF);// 스타트 캔버스 hide
 			goCamera.SetActive (false);
-			player.gameObject.SetActive (false);
-			enermy.gameObject.SetActive (false);
+			player.gameObject.SetActive (true);
+			enermy.gameObject.SetActive (true);
 			//StartCoroutine ("StartGame");
 
 			break;
@@ -94,8 +94,8 @@ public class MovingCamera : MonoBehaviour {
 			OnOff (startCanvas, startCanvasG, ON);
 			OnOff (settingCanvas, settingCanvasG, OFF);
 			break;
-			
 		}
+
     }
 
 	public void OnOff(Canvas canvas, CanvasGroup canvasG, int FLAG){
