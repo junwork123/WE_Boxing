@@ -47,7 +47,7 @@ public class State_Attack : State_FSM<Enermy>
 		if (!_Enermy.target.mAnim.GetBool("isDead") && _Enermy.CheckDistance() &&_Enermy.CheckAngle())
 		{
 			_Enermy.mAnim.SetBool ("guard", false);
-			_Enermy.mAnim.SetInteger ("AttackMode", Random.Range (1, 4));
+			_Enermy.mAnim.SetInteger ("AttackMode", Random.Range (2, 2));
 			_Enermy.mAnim.SetBool ("Left", Random.Range (0, 1) == 0 ? true : false);
 			_Enermy.mAnim.SetBool ("Right", !_Enermy.mAnim.GetBool ("Left"));
 			isAttack = true;

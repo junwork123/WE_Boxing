@@ -25,7 +25,7 @@ public class Enermy : Characters<Player>
 		ResetState ();
 		//mCorutine = Holding ();		
 		mNav.SetDestination (target.transform.position);
-		this.gameObject.SetActive (false);
+		this.gameObject.SetActive (true);
 
 	}
 

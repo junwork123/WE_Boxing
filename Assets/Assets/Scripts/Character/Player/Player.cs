@@ -15,7 +15,6 @@ public class Player : Characters<Enermy>
 	private float rotationY;
 
 	public Vector3 mDir;
-	public Camera mCamera;
 	public bool isUnBeatTime = false;
 	public IEnumerator mCorutine;
 
@@ -24,7 +23,7 @@ public class Player : Characters<Enermy>
 
 	public void Start(){
 		mAnim.SetInteger ("AttackMode", 1);
-		this.gameObject.SetActive (false);
+		this.gameObject.SetActive (true);
 	}
 
 	void Update () 
@@ -45,6 +44,7 @@ public class Player : Characters<Enermy>
 				if (isActiveAndEnabled && time >= Count) {
 					this.gameObject.SetActive (false);
 					time = 0f;
+					UnityEngine.SceneManagement.SceneManager.LoadScene("Gameover",UnityEngine.SceneManagement.LoadSceneMode.Single);
 				}
 			}
 		}

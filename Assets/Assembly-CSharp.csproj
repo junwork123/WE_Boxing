@@ -119,6 +119,7 @@
      <Compile Include="Assets\Scripts\UI\HPBar\MonoTexture.cs" />
      <Compile Include="Assets\Scripts\UI\HPBar\MonoTexture2.cs" />
      <Compile Include="Assets\Scripts\UI\HPBar\OrderList.cs" />
+     <Compile Include="Assets\Scripts\UI\Look.cs" />
      <Compile Include="Assets\Scripts\UI\MovingCamera.cs" />
      <Compile Include="Assets\Scripts\UI\VRGaze.cs" />
      <None Include="Assets\Textures\WB\keyframe_information.txt" />
