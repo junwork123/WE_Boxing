@@ -110,7 +110,6 @@
      <Compile Include="Assets\Scripts\UI\ArduInput.cs" />
      <Compile Include="Assets\Scripts\UI\BloodRepeatScript.cs" />
      <Compile Include="Assets\Scripts\UI\CameraShaker.cs" />
-     <Compile Include="Assets\Scripts\UI\ComportText.cs" />
      <Compile Include="Assets\Scripts\UI\Crosshair.cs" />
      <Compile Include="Assets\Scripts\UI\FrameManager.cs" />
      <Compile Include="Assets\Scripts\UI\HPBar\Margin.cs" />
@@ -122,6 +121,7 @@
      <Compile Include="Assets\Scripts\UI\HPBar\OrderList.cs" />
      <Compile Include="Assets\Scripts\UI\Look.cs" />
      <Compile Include="Assets\Scripts\UI\MovingCamera.cs" />
+     <Compile Include="Assets\Scripts\UI\ToggleButton.cs" />
      <Compile Include="Assets\Scripts\UI\VRGaze.cs" />
      <None Include="Assets\Textures\WB\keyframe_information.txt" />
      <None Include="Assets\OVR\Editor\AndroidManifest.OVRSubmission.xml" />

@@ -65,6 +65,7 @@ public class PlayerInput : MonoBehaviour {
 			_player.mAnim.SetBool ("Right", false);
 
 			_LeftInput.punch ();
+			_RightInput.punch ();
 		} 
 		// 오른쪽 공격 설정 
 		if (Input.GetMouseButton (1)) { 
@@ -72,6 +73,7 @@ public class PlayerInput : MonoBehaviour {
 			_player.mAnim.SetBool ("Right", true);
 
 			_LeftInput.shoot ();
+			_RightInput.shoot ();
 		}
 
 	}
