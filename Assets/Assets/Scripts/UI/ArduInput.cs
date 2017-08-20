@@ -64,6 +64,9 @@ public class ArduInput : MonoBehaviour
 				Debug.Log ("error");
 			} finally{
 				Debug.Log ("Connected " + sp.PortName);
+
+				foreach(Toggle t in _Toggle)
+					t.isOn = false;
 			}
 		}
 	}
