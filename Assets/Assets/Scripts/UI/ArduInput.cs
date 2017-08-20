@@ -6,18 +6,30 @@ using System.IO.Ports;
 
 public class ArduInput : MonoBehaviour
 {
-    public Dropdown Maindropdown;
-    public Text text;
     public string[] ports;
-	private SerialPort sp = new SerialPort ();//시리얼포트 객체
+	int portIdx;
+	SerialPort sp;
 
-	public GameObject button;
-   // public static SerialPort sp = new SerialPort("COM1", 9600);// Refrence to serialPort 
+	public Toggle [] _Toggle;
+	public Text[] _ToggleText;
+	bool togglo_on = false;
+
     void Start()
     {
-        // Fill ports array with COM's Name available
+		sp = new SerialPort();
         ports = SerialPort.GetPortNames();
-        //clear/remove all option item
+
+		if (!sp.IsOpen) {
+			sp.PortName = "No Devices";
+			sp.BaudRate = 115200;
+			sp.RtsEnable = true;
+		}
+			
+		foreach (Text t in _ToggleText) {
+			if (portIdx < ports.Length)
+				t.text = ports [portIdx++];
+		}
+		/*
         Maindropdown.options.Clear();
 		List<Dropdown.OptionData> names = new List<Dropdown.OptionData> ();
 
@@ -27,62 +39,24 @@ public class ArduInput : MonoBehaviour
 			names.Add (name);
         }
 
-		Maindropdown.AddOptions(names);
-        //this swith from 1 to 0 is only to refresh the visual DdMenu
-       // Maindropdown.value = 1;
-        //Maindropdown.value = 0;
+		Maindropdown.AddOptions(names);*/
     }
-    void Update()
-	{
-		//COM port Name that is currently selected on the dropDown Menu
 
-		/*
-		ports_state ();
+	public void Open(){
 
-		if (Maindropdown.value > 0) {
-			text.text = ports [Maindropdown.value];
-			foreach (string c in ports)
-			{
-				Maindropdown.options.Add(new Dropdown.OptionData() { text = c });
+		for (int i = 0; i < _Toggle.Length; i++) {
+			if( _Toggle[i].isOn == true ){
+				if (togglo_on == false) {
+					togglo_on = true;
+					sp.PortName = _ToggleText[i].text;
+				} else {
+					Debug.Log ("too many toggle selected");
+					return;
+				}
 			}
-			ports_state ();
-		} else
-			text.text = null;
-		*/
+		}
 
-    }
-
-	void ports_state(){
-		/*
 		if (!sp.IsOpen) {
-			button.SetActive (true);
-		} else {
-			button.SetActive (false);
-		}*/
-	}
-
-	public void mySelect(){
-		Maindropdown.Show ();
-		Debug.Log (Maindropdown.options.Count);
-	}
-
-	public void Isopen(){
-
-		string test_text; // = ports [Maindropdown.value];
-
-
-		if (Maindropdown.value >= 0)
-			test_text = ports [Maindropdown.value];
-		else
-			test_text = "No Devices";
-		
-		if (!sp.IsOpen) {
-			sp.PortName = test_text;
-			Debug.Log (sp.PortName);
-			sp.BaudRate = 115200;
-			sp.RtsEnable = true;
-
-			//button.SetActive (false);
 
 			try{
 				sp.Open ();

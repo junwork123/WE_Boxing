@@ -110,6 +110,7 @@
      <Compile Include="Assets\Scripts\UI\ArduInput.cs" />
      <Compile Include="Assets\Scripts\UI\BloodRepeatScript.cs" />
      <Compile Include="Assets\Scripts\UI\CameraShaker.cs" />
+     <Compile Include="Assets\Scripts\UI\ComportText.cs" />
      <Compile Include="Assets\Scripts\UI\Crosshair.cs" />
      <Compile Include="Assets\Scripts\UI\FrameManager.cs" />
      <Compile Include="Assets\Scripts\UI\HPBar\Margin.cs" />
