@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Myo\Scripts\JointOrientation.cs" />
      <Compile Include="Assets\Myo\Scripts\Myo.NET\EventTypes.cs" />
      <Compile Include="Assets\Myo\Scripts\Myo.NET\Hub.cs" />
      <Compile Include="Assets\Myo\Scripts\Myo.NET\Myo.cs" />
@@ -54,6 +55,7 @@
      <Compile Include="Assets\Myo\Scripts\Myo.NET\Quaternion.cs" />
      <Compile Include="Assets\Myo\Scripts\Myo.NET\Vector3.cs" />
      <Compile Include="Assets\Myo\Scripts\Myo.NET\libmyo.cs" />
+     <Compile Include="Assets\Myo\Scripts\Punch_Judgment.cs" />
      <Compile Include="Assets\Myo\Scripts\ThalmicHub.cs" />
      <Compile Include="Assets\Myo\Scripts\ThalmicMyo.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRBoundary.cs" />

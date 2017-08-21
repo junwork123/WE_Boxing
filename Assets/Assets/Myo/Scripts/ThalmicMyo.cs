@@ -12,6 +12,7 @@ using UnlockType = Thalmic.Myo.UnlockType;
 // coordinate system conventions (the y axis is up, the z axis is forward, and the coordinate system is left-handed).
 public class ThalmicMyo : MonoBehaviour {
 
+	public Punch_Judgment Data; 
     // True if and only if Myo has detected that it is on an arm.
     public bool armSynced;
 
@@ -77,6 +78,7 @@ public class ThalmicMyo : MonoBehaviour {
             }
             if (_myoAccelerometer != null) {
                 accelerometer = new Vector3(_myoAccelerometer.Y, _myoAccelerometer.Z, -_myoAccelerometer.X);
+				Data.Accel = new Vector3(_myoAccelerometer.Y, _myoAccelerometer.Z, -_myoAccelerometer.X);
             }
             if (_myoGyroscope != null) {
                 gyroscope = new Vector3(_myoGyroscope.Y, _myoGyroscope.Z, -_myoGyroscope.X);

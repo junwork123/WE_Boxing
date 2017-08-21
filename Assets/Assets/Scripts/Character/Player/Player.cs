@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : Characters<Enermy>
 {
 	// 움직임 변수
-	public float mouseSensitivity = 2f;
 	public float upDownRange = 30;
 
 	float Count = 5f;
@@ -17,6 +16,8 @@ public class Player : Characters<Enermy>
 	public Vector3 mDir;
 	public bool isUnBeatTime = false;
 	public IEnumerator mCorutine;
+	public BoxCollider mMyoCol_L;
+	public BoxCollider mMyoCol_R;
 
 	// 델리게이트 
 	public PlayerDelig mDelig;
@@ -24,6 +25,10 @@ public class Player : Characters<Enermy>
 	public void Start(){
 		mAnim.SetInteger ("AttackMode", 1);
 		this.gameObject.SetActive (true);
+
+		mMyoCol_L.enabled = true;
+		mMyoCol_R.enabled = true;
+
 	}
 
 	void Update () 

@@ -16,7 +16,7 @@ public class EnermyDelig : CharacterDelig
 	}
 		
 	public override void getDamage(){
-		print (_Enermy.name +" get damage");
+		//print (_Enermy.name +" get damage");
 
 		// 뒤로 밀림
 		//_Enermy.mRigidbody.AddForce (Vector3.back, ForceMode.Impulse);
