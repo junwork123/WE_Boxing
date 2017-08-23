@@ -16,15 +16,14 @@ public class ArduInput : MonoBehaviour
 
     void Start()
     {
-		sp = new SerialPort();
-        ports = SerialPort.GetPortNames();
-
-		if (!sp.IsOpen) {
-			sp.PortName = "No Devices";
-			sp.BaudRate = 115200;
-			sp.RtsEnable = true;
-		}
+		sp = new SerialPort("COM5", 115200, 
+						System.IO.Ports.Parity.None, 8, System.IO.Ports.StopBits.One);
+		sp.RtsEnable = true;
+		sp.Handshake = Handshake.None;
+		sp.ReadTimeout = 200;
 			
+		ports = SerialPort.GetPortNames();
+
 		foreach (Text t in _ToggleText) {
 			if (portIdx < ports.Length)
 				t.text = ports [portIdx++];
@@ -41,6 +40,34 @@ public class ArduInput : MonoBehaviour
 
 		Maindropdown.AddOptions(names);*/
     }
+	void Update () {
+
+		if (Input.GetKeyDown (KeyCode.Alpha1)) {
+			OnOff (1);
+		}else if (Input.GetKeyDown (KeyCode.Alpha2)) {
+			OnOff (2);
+		}else if (Input.GetKeyDown (KeyCode.Alpha3)) {
+			OnOff (3);
+		}else if (Input.GetKeyDown (KeyCode.Alpha4)) {
+			OnOff (4);
+		}else if (Input.GetKeyDown (KeyCode.Alpha5)) {
+			OnOff (5);
+		}
+
+		if (Input.GetKeyDown (KeyCode.Return)) {
+			Debug.Log ("Attempt to Open");
+			Open ();
+
+		}
+		if(Input.GetKeyDown(KeyCode.R)){
+			foreach(Toggle t in _Toggle)
+				t.isOn = false;
+
+			Debug.Log ("Reset Buttons");
+		}
+
+
+	}
 
 	public void Open(){
 
@@ -67,6 +94,7 @@ public class ArduInput : MonoBehaviour
 
 				foreach(Toggle t in _Toggle)
 					t.isOn = false;
+
 			}
 		}
 	}
@@ -82,5 +110,15 @@ public class ArduInput : MonoBehaviour
 			sp.Write ("2");
 		else
 			Debug.Log ("not open - shoot");	
+	}
+
+	public void OnOff(int idx)
+	{
+		idx = idx - 1;
+		if (_Toggle[idx].isOn == true)
+			_Toggle[idx].isOn = false;
+		else
+			_Toggle[idx].isOn = true;
+
 	}
 }

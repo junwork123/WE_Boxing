@@ -36,7 +36,7 @@ public class State_Attack : State_FSM<Enermy>
 		}
 		if ( CurrenntTime > AttackTime )
 			_Enermy.ChangeState(State_Move.Instance);
-		
+		/*
 		if (isAttack == true) {
 			_Enermy.ChangeState (State_Move.Instance);
 			_Enermy.mAnim.SetBool ("guard", true);
@@ -52,7 +52,8 @@ public class State_Attack : State_FSM<Enermy>
 			_Enermy.mAnim.SetBool ("Right", !_Enermy.mAnim.GetBool ("Left"));
 			isAttack = true;
 			//_Enermy.ChangeState (State_Move.Instance);
-		}
+		}*/
+
 		else
 		{
 			_Enermy.ChangeState(State_Move.Instance);

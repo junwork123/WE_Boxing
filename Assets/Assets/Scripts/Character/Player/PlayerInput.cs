@@ -64,11 +64,13 @@ public class PlayerInput : MonoBehaviour {
 			_player.mAnim.SetInteger ("AttackMode", 1);
 			_player.mAnim.SetBool ("Left", true);
 			_player.mAnim.SetBool ("Right", false);
+			_LeftInput.punch ();
 
 		} else if (Punch_Judgment.attackMode.CompareTo ("Hook_L")== 0) {
 			_player.mAnim.SetInteger ("AttackMode", 2);
 			_player.mAnim.SetBool ("Left", true);
 			_player.mAnim.SetBool ("Right", false);
+			_LeftInput.shoot ();
 
 		} else if (Punch_Judgment.attackMode.CompareTo ("Upper_L")== 0) {
 			_player.mAnim.SetInteger ("AttackMode", 3);
@@ -81,11 +83,13 @@ public class PlayerInput : MonoBehaviour {
 			_player.mAnim.SetInteger ("AttackMode", 1);
 			_player.mAnim.SetBool ("Left", false);
 			_player.mAnim.SetBool ("Right", true);
+			_RightInput.punch ();
 
 		} else if (Punch_Judgment.attackMode.CompareTo ("Hook_R")== 0) {
 			_player.mAnim.SetInteger ("AttackMode", 2);
 			_player.mAnim.SetBool ("Left", false);
 			_player.mAnim.SetBool ("Right", true);
+			_RightInput.shoot ();
 
 		} else if (Punch_Judgment.attackMode.CompareTo ("Upper_R")== 0) {
 			_player.mAnim.SetInteger ("AttackMode", 3);

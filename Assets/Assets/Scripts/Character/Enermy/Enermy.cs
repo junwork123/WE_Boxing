@@ -33,6 +33,36 @@ public class Enermy : Characters<Player>
 	{ 
 		if( this.gameObject.activeSelf == true )
 			mState.Update ();
+
+		mAnim.SetBool ("Left", false);
+		mAnim.SetBool ("Right", false);
+		mAnim.SetBool ("Damaged", false);
+
+		// 어택 모드 설정
+		if (Input.GetKeyDown (KeyCode.Alpha1)) {
+			mAnim.SetInteger ("AttackMode", 1);
+
+		} else if (Input.GetKeyDown (KeyCode.Alpha2)) {
+			mAnim.SetInteger ("AttackMode", 2);
+
+		} else if (Input.GetKeyDown (KeyCode.Alpha3)) {
+			mAnim.SetInteger ("AttackMode", 3);
+
+		} else if (Input.GetKeyDown (KeyCode.Alpha4)) {
+			mAnim.SetInteger ("AttackMode", 4);
+		}
+
+		// 왼쪽 공격 설정
+		if (Input.GetMouseButton (0)) { 
+			mAnim.SetBool ("Left", true);
+			mAnim.SetBool ("Right", false);
+		} 
+
+		// 오른쪽 공격 설정 
+		if (Input.GetMouseButton (1)) { 
+			mAnim.SetBool ("Left", false);
+			mAnim.SetBool ("Right", true);
+		}
 	} 
 
 	public void ChangeState(State_FSM<Enermy> _state){
