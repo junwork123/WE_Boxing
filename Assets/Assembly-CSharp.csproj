@@ -105,7 +105,6 @@
      <Compile Include="Assets\Scripts\Character\HandCol_P.cs" />
      <Compile Include="Assets\Scripts\Character\ICharacters.cs" />
      <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
-     <Compile Include="Assets\Scripts\Character\Player\PlayerBody.cs" />
      <Compile Include="Assets\Scripts\Character\Player\PlayerDelig.cs" />
      <Compile Include="Assets\Scripts\Character\Player\PlayerHead.cs" />
      <Compile Include="Assets\Scripts\Character\Player\PlayerInput.cs" />

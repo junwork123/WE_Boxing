@@ -16,27 +16,40 @@ public class Enermy : Characters<Player>
 	public float attackDir = 0.5f;
 	public bool isUnBeatTime = false;
 
+	float Count = 5f;
+	float time = 0f;
+
 	// Use this for initialization
 	public void Start () {
 		// Player 델리게이트에
 		// Enermy 피격 함수를 등록
 		PlayerDelig.OnAttack += mDelig.getDamage;
 	
-		ResetState ();
-		//mCorutine = Holding ();		
-		mNav.SetDestination (target.transform.position);
+		//ResetState ();	
+		//mNav.SetDestination (target.transform.position);
 		this.gameObject.SetActive (true);
 
 	}
 
 	void Update () 
 	{ 
-		if( this.gameObject.activeSelf == true )
+		/*
+		if (this.gameObject.activeSelf == true)
 			mState.Update ();
+		*/
 
+		if (HP <= 0)
+			Die ();
 		mAnim.SetBool ("Left", false);
 		mAnim.SetBool ("Right", false);
 		mAnim.SetBool ("Damaged", false);
+
+		float moveFB = Input.GetAxis ("Horizontal");
+		float moveLR = Input.GetAxis ("Vertical");
+
+		mDir = new Vector3 (moveFB, 0, moveLR);
+		transform.Translate ( mDir * Time.smoothDeltaTime * moveSpeed );
+
 
 		// 어택 모드 설정
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
@@ -63,7 +76,26 @@ public class Enermy : Characters<Player>
 			mAnim.SetBool ("Left", false);
 			mAnim.SetBool ("Right", true);
 		}
+
 	} 
+
+	public void Die(){
+		
+		time += Time.deltaTime;
+
+		mAnim.SetBool ("isDead", true);
+		mAnim.SetBool ("Left", false);
+		mAnim.SetBool ("Right", false);
+		mAnim.SetBool ("guard", false);
+
+		if( isActiveAndEnabled && time >= Count)
+		{
+			this.gameObject.SetActive(false);
+			time = 0f;
+			UnityEngine.SceneManagement.SceneManager.LoadScene("Gameover",UnityEngine.SceneManagement.LoadSceneMode.Single);
+		}
+
+	}
 
 	public void ChangeState(State_FSM<Enermy> _state){
 		mState.ChangeState (_state);
@@ -90,13 +122,5 @@ public class Enermy : Characters<Player>
 			return false;
 	}
 
-	void OnTriggerEnter( Collider col ){
-
-		// 손의 콜라이더에 닿았을 때
-		if ( col.transform.tag == "HandCol" ){
-			//mDelig.getDamage ();
-		}
-
-	}
 
 }

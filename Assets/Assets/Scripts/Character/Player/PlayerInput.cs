@@ -17,9 +17,9 @@ public class PlayerInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Init ();
-		Move ();
+		//Move ();
 		Attack ();
-		Avoid ();
+		//Avoid ();
 	}
 
 
@@ -28,7 +28,7 @@ public class PlayerInput : MonoBehaviour {
 		_player.mAnim.SetBool ("Right", false);
 		_player.mAnim.SetBool ("Damaged", false);
 	}
-
+	/*
 	public void Move(){
 
 		float moveFB = Input.GetAxis ("Horizontal");
@@ -38,12 +38,50 @@ public class PlayerInput : MonoBehaviour {
 		_player.mAnim.SetFloat ("moveLR", moveFB);
 
 	}
-
+	*/
 	public int getGesture (){
 		return 0;
 	}
 
 	public void Attack(){
+
+		// 왼팔 
+		if (Punch_Judgment.attackMode.CompareTo ("Hook_L") == 0) {
+			_player.mAnim.SetInteger ("AttackMode", 1);
+			_player.mAnim.SetBool ("Left", true);
+			_player.mAnim.SetBool ("Right", false);
+			_LeftInput.punch ();
+
+		} else if (Punch_Judgment.attackMode.CompareTo ("Jap_L")== 0) {
+			_player.mAnim.SetInteger ("AttackMode", 1);
+			_player.mAnim.SetBool ("Left", true);
+			_player.mAnim.SetBool ("Right", false);
+			_LeftInput.shoot ();
+
+		} else if (Punch_Judgment.attackMode.CompareTo ("Upper_L")== 0) {
+			_player.mAnim.SetInteger ("AttackMode", 1);
+			_player.mAnim.SetBool ("Left", true);
+			_player.mAnim.SetBool ("Right", false);
+		}
+
+		// 오른팔 
+		if (Punch_Judgment.attackMode.CompareTo ("Hook_R")== 0) {
+			_player.mAnim.SetInteger ("AttackMode", 1);
+			_player.mAnim.SetBool ("Left", false);
+			_player.mAnim.SetBool ("Right", true);
+			_RightInput.punch ();
+
+		} else if (Punch_Judgment.attackMode.CompareTo ("Jap_R")== 0) {
+			_player.mAnim.SetInteger ("AttackMode", 1);
+			_player.mAnim.SetBool ("Left", false);
+			_player.mAnim.SetBool ("Right", true);
+			_RightInput.shoot ();
+
+		} else if (Punch_Judgment.attackMode.CompareTo ("Upper_R")== 0) {
+			_player.mAnim.SetInteger ("AttackMode", 1);
+			_player.mAnim.SetBool ("Left", false);
+			_player.mAnim.SetBool ("Right", true);
+		}
 		/*
 		// 어택 모드 설정
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
@@ -57,46 +95,7 @@ public class PlayerInput : MonoBehaviour {
 
 		} else if (Input.GetKeyDown (KeyCode.Alpha4)) {
 			_player.mAnim.SetInteger ("AttackMode", 4);
-		}*/
-
-		// 왼팔 
-		if (Punch_Judgment.attackMode.CompareTo ("Jap_L") == 0) {
-			_player.mAnim.SetInteger ("AttackMode", 1);
-			_player.mAnim.SetBool ("Left", true);
-			_player.mAnim.SetBool ("Right", false);
-			_LeftInput.punch ();
-
-		} else if (Punch_Judgment.attackMode.CompareTo ("Hook_L")== 0) {
-			_player.mAnim.SetInteger ("AttackMode", 2);
-			_player.mAnim.SetBool ("Left", true);
-			_player.mAnim.SetBool ("Right", false);
-			_LeftInput.shoot ();
-
-		} else if (Punch_Judgment.attackMode.CompareTo ("Upper_L")== 0) {
-			_player.mAnim.SetInteger ("AttackMode", 3);
-			_player.mAnim.SetBool ("Left", true);
-			_player.mAnim.SetBool ("Right", false);
 		}
-
-		// 오른팔 
-		if (Punch_Judgment.attackMode.CompareTo ("Jap_R")== 0) {
-			_player.mAnim.SetInteger ("AttackMode", 1);
-			_player.mAnim.SetBool ("Left", false);
-			_player.mAnim.SetBool ("Right", true);
-			_RightInput.punch ();
-
-		} else if (Punch_Judgment.attackMode.CompareTo ("Hook_R")== 0) {
-			_player.mAnim.SetInteger ("AttackMode", 2);
-			_player.mAnim.SetBool ("Left", false);
-			_player.mAnim.SetBool ("Right", true);
-			_RightInput.shoot ();
-
-		} else if (Punch_Judgment.attackMode.CompareTo ("Upper_R")== 0) {
-			_player.mAnim.SetInteger ("AttackMode", 3);
-			_player.mAnim.SetBool ("Left", false);
-			_player.mAnim.SetBool ("Right", true);
-		}
-		/*
 		// 왼쪽 공격 설정
 		if (Input.GetMouseButton (0)) { 
 			_player.mAnim.SetBool ("Left", true);

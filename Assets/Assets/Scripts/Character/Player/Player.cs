@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VR;
 
 public class Player : Characters<Enermy>
 {
@@ -19,6 +20,9 @@ public class Player : Characters<Enermy>
 	public BoxCollider mMyoCol_L;
 	public BoxCollider mMyoCol_R;
 
+	public Transform tranformBody;
+	public Transform tranformCam;
+
 	// 델리게이트 
 	public PlayerDelig mDelig;
 
@@ -28,7 +32,7 @@ public class Player : Characters<Enermy>
 
 		mMyoCol_L.enabled = true;
 		mMyoCol_R.enabled = true;
-
+		//InputTracking.disablePositionalTracking = true;
 	}
 
 	void Update () 
@@ -55,18 +59,22 @@ public class Player : Characters<Enermy>
 		}
 	} 
 
-	void OnTriggerEnter( Collider col ){
-
-		if ( col.transform.tag == "HandCol" ){
-			//mDelig.getDamage ();
-		}
-
-	}
-
 	public override void Move(){
+		// 카메라가 바라보는 방향으로
+		// y축 기준 회전
+		//tranformBody.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, tranformCam.transform.eulerAngles.y, 0.0f));
 
-		mDir = new Vector3 ( mAnim.GetFloat("moveLR"), 0, mAnim.GetFloat("moveFB") );
+		mDir = InputTracking.GetLocalRotation (VRNode.CenterEye).eulerAngles;
+		mDir.x = 0;
+		mDir.z = 0;
+		tranformBody.transform.rotation = Quaternion.Euler (mDir);
+
+		//mDir = new Vector3 ( mAnim.GetFloat("moveLR"), 0, mAnim.GetFloat("moveFB") );
+		mDir = InputTracking.GetLocalPosition (VRNode.CenterEye);
+		mDir.y = 0;
 		transform.Translate ( mDir * Time.smoothDeltaTime * moveSpeed );
+
+		//InputTracking.Recenter ();
 	}
 
 	public override void Attack(){
