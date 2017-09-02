@@ -33,6 +33,7 @@ public class State_Attack : State_FSM<Enermy>
 		if (_Enermy.HP <= 0)
 		{
 			_Enermy.ChangeState(State_Die.Instance);
+			SoundManager.instance.BGMSound("End");
 		}
 		if ( CurrenntTime > AttackTime )
 			_Enermy.ChangeState(State_Move.Instance);

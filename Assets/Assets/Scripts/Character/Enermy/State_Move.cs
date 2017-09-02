@@ -24,6 +24,7 @@ public class State_Move : State_FSM<Enermy>
 		if (_Enermy.HP <= 0)
 		{
 			_Enermy.ChangeState(State_Die.Instance);
+			SoundManager.instance.BGMSound("End");
 		}
 
 		// 타겟 유무 확인

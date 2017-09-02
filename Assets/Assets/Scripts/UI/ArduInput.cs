@@ -107,7 +107,7 @@ public class ArduInput : MonoBehaviour
 	}
 	public void shoot() {
 		if (sp.IsOpen)
-			sp.Write ("2");
+			sp.Write ("5");
 		else
 			Debug.Log ("not open - shoot");	
 	}

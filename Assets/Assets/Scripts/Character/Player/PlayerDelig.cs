@@ -5,11 +5,16 @@ using UnityEngine;
 public class PlayerDelig : CharacterDelig
 {
 	Player _Player;
-	public CameraShaker shakers;
+	public ArduInput _LeftInput;
+	public ArduInput _RightInput;
+
+	public delegate void AttackHandler();
+	public AttackHandler _AttackHandler;
 
 	public void Start(){
 		obj = GameObject.Find ("Player");
 		_Player = obj.GetComponent<Player> ();
+
 	}
 
 	public override void applyDamage(){
@@ -27,6 +32,7 @@ public class PlayerDelig : CharacterDelig
 			_Player.mAnim.SetBool ("Damaged", true);
 			_Player.mCorutine = UnBeatTime ();
 			StartCoroutine (_Player.mCorutine);
+			SoundManager.instance.PainSound ();
 		}
 
 	}
@@ -48,13 +54,16 @@ public class PlayerDelig : CharacterDelig
 			countTime++;
 		}*/
 
-		//_Player.mRender.material.color = Color.red;// (255, 255, 255, 180);
+		_Player.mRender.material.color = Color.red;// (255, 255, 255, 180);
 		yield return new WaitForSeconds (0.1f);
 
-		//_Player.mRender.material.color = new Color32 (255, 255, 255, 255);
+		Debug.Log ("player hunt");
+		_LeftInput.shoot ();
+		_RightInput.shoot ();
+
+		_Player.mRender.material.color = new Color32 (255, 255, 255, 255);
 		_Player.isUnBeatTime = false;
 		_Player.mAnim.SetBool ("Damaged", false);
-		shakers.Shake ();
 
 		yield return null;
 

@@ -5,6 +5,7 @@ using LockingPolicy = Thalmic.Myo.LockingPolicy;
 using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
 using VibrationType = Thalmic.Myo.VibrationType;
+using UnityEngine.VR;
 
 // Orient the object to match that of the Myo armband.
 // Compensate for initial yaw (orientation about the gravity vector) and roll (orientation about
@@ -48,8 +49,10 @@ public class JointOrientation : MonoBehaviour
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
         }
-        if (Input.GetKeyDown ("r")) {
+		if (Input.GetKeyDown (KeyCode.R)) {
             updateReference = true;
+
+			InputTracking.Recenter ();
         }
 
         // Update references. This anchors the joint on-screen such that it faces forward away

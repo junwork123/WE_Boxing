@@ -110,8 +110,8 @@
      <Compile Include="Assets\Scripts\Character\Player\PlayerInput.cs" />
      <Compile Include="Assets\Scripts\UI\ArduInput.cs" />
      <Compile Include="Assets\Scripts\UI\BloodRepeatScript.cs" />
-     <Compile Include="Assets\Scripts\UI\CameraShaker.cs" />
      <Compile Include="Assets\Scripts\UI\Crosshair.cs" />
+     <Compile Include="Assets\Scripts\UI\Crowd.cs" />
      <Compile Include="Assets\Scripts\UI\FrameManager.cs" />
      <Compile Include="Assets\Scripts\UI\HPBar\Margin.cs" />
      <Compile Include="Assets\Scripts\UI\HPBar\MonoDockList.cs" />
@@ -122,6 +122,7 @@
      <Compile Include="Assets\Scripts\UI\HPBar\OrderList.cs" />
      <Compile Include="Assets\Scripts\UI\Look.cs" />
      <Compile Include="Assets\Scripts\UI\MovingCamera.cs" />
+     <Compile Include="Assets\Scripts\UI\SoundManager.cs" />
      <Compile Include="Assets\Scripts\UI\ToggleButton.cs" />
      <Compile Include="Assets\Scripts\UI\VRGaze.cs" />
      <None Include="Assets\Textures\WB\keyframe_information.txt" />

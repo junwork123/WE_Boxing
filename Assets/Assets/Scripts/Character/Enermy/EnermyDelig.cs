@@ -6,6 +6,9 @@ public class EnermyDelig : CharacterDelig
 {
 	public Enermy _Enermy;
 
+	public delegate void AttackHandler();
+	public AttackHandler _AttackHandler;
+
 	public void Start(){
 		obj = GameObject.Find ("Enermy");
 		_Enermy = obj.GetComponent<Enermy> ();
@@ -29,6 +32,7 @@ public class EnermyDelig : CharacterDelig
 			_Enermy.mAnim.SetBool ("Damaged", true);
 			_Enermy.mCorutine = UnBeatTime ();
 			StartCoroutine (_Enermy.mCorutine);
+			SoundManager.instance.PainSound ();
 		}
 
 	}

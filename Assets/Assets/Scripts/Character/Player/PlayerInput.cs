@@ -1,14 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VR;
 
 public class PlayerInput : MonoBehaviour {
 
 	public Player _player;
-	public ArduInput _LeftInput;
-	public ArduInput _RightInput;
-	public Vector3 first;
-	public Vector3 second;
 
 	// Use this for initialization
 	void Start () {
@@ -20,13 +17,12 @@ public class PlayerInput : MonoBehaviour {
 		//Move ();
 		Attack ();
 		//Avoid ();
-	}
 
+	}
 
 	public void Init() {
 		_player.mAnim.SetBool ("Left", false);
 		_player.mAnim.SetBool ("Right", false);
-		_player.mAnim.SetBool ("Damaged", false);
 	}
 	/*
 	public void Move(){
@@ -50,18 +46,22 @@ public class PlayerInput : MonoBehaviour {
 			_player.mAnim.SetInteger ("AttackMode", 1);
 			_player.mAnim.SetBool ("Left", true);
 			_player.mAnim.SetBool ("Right", false);
-			_LeftInput.punch ();
+			SoundManager.instance.AttackWindSound ();
+			//InputTracking.Recenter ();
 
 		} else if (Punch_Judgment.attackMode.CompareTo ("Jap_L")== 0) {
-			_player.mAnim.SetInteger ("AttackMode", 1);
+			_player.mAnim.SetInteger ("AttackMode", 2);
 			_player.mAnim.SetBool ("Left", true);
 			_player.mAnim.SetBool ("Right", false);
-			_LeftInput.shoot ();
+			SoundManager.instance.AttackWindSound ();
+			//InputTracking.Recenter ();
 
 		} else if (Punch_Judgment.attackMode.CompareTo ("Upper_L")== 0) {
-			_player.mAnim.SetInteger ("AttackMode", 1);
+			_player.mAnim.SetInteger ("AttackMode", 2);
 			_player.mAnim.SetBool ("Left", true);
 			_player.mAnim.SetBool ("Right", false);
+			SoundManager.instance.AttackWindSound ();
+			//InputTracking.Recenter ();
 		}
 
 		// 오른팔 
@@ -69,18 +69,22 @@ public class PlayerInput : MonoBehaviour {
 			_player.mAnim.SetInteger ("AttackMode", 1);
 			_player.mAnim.SetBool ("Left", false);
 			_player.mAnim.SetBool ("Right", true);
-			_RightInput.punch ();
+			SoundManager.instance.AttackWindSound ();
+			//InputTracking.Recenter ();
 
 		} else if (Punch_Judgment.attackMode.CompareTo ("Jap_R")== 0) {
-			_player.mAnim.SetInteger ("AttackMode", 1);
+			_player.mAnim.SetInteger ("AttackMode", 2);
 			_player.mAnim.SetBool ("Left", false);
 			_player.mAnim.SetBool ("Right", true);
-			_RightInput.shoot ();
+			SoundManager.instance.AttackWindSound ();
+			//InputTracking.Recenter ();
 
 		} else if (Punch_Judgment.attackMode.CompareTo ("Upper_R")== 0) {
-			_player.mAnim.SetInteger ("AttackMode", 1);
+			_player.mAnim.SetInteger ("AttackMode", 2);
 			_player.mAnim.SetBool ("Left", false);
 			_player.mAnim.SetBool ("Right", true);
+			SoundManager.instance.AttackWindSound ();
+			//InputTracking.Recenter ();
 		}
 		/*
 		// 어택 모드 설정

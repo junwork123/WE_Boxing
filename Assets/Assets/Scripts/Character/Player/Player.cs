@@ -6,9 +6,8 @@ using UnityEngine.VR;
 public class Player : Characters<Enermy>
 {
 	// 움직임 변수
-	public float upDownRange = 30;
 
-	float Count = 5f;
+	float Count = 10f;
 	float time = 0f;
 
 	private float rotationX;
@@ -22,23 +21,27 @@ public class Player : Characters<Enermy>
 
 	public Transform tranformBody;
 	public Transform tranformCam;
+	public SkinnedMeshRenderer mRender;
 
 	// 델리게이트 
 	public PlayerDelig mDelig;
 
-	public void Start(){
+	public void Awake(){
 		mAnim.SetInteger ("AttackMode", 1);
 		this.gameObject.SetActive (true);
 
 		mMyoCol_L.enabled = true;
 		mMyoCol_R.enabled = true;
-		//InputTracking.disablePositionalTracking = true;
+		mDir = InputTracking.GetLocalPosition (VRNode.CenterEye);
+
+		mDelig._AttackHandler += mDelig.getDamage;
 	}
 
 	void Update () 
 	{ 
 		if (this.HP > 0 && this.gameObject.activeSelf == true ) {
-			Move ();
+			MoveRot ();
+			MovePos ();
 			Attack ();
 		} else {
 			if (mAnim.GetBool ("isDead") == false) {
@@ -46,6 +49,7 @@ public class Player : Characters<Enermy>
 				mAnim.SetBool ("Left", false);
 				mAnim.SetBool ("Right", false);
 				mAnim.SetBool ("guard", false);
+				SoundManager.instance.BGMSound ("Lose");
 			}
 			else {
 				time += Time.deltaTime;
@@ -59,22 +63,26 @@ public class Player : Characters<Enermy>
 		}
 	} 
 
-	public override void Move(){
+
+	public void MoveRot(){
 		// 카메라가 바라보는 방향으로
 		// y축 기준 회전
 		//tranformBody.transform.rotation = Quaternion.Euler (new Vector3 (0.0f, tranformCam.transform.eulerAngles.y, 0.0f));
 
-		mDir = InputTracking.GetLocalRotation (VRNode.CenterEye).eulerAngles;
+		Vector3 mDir = InputTracking.GetLocalRotation (VRNode.CenterEye).eulerAngles;
 		mDir.x = 0;
 		mDir.z = 0;
 		tranformBody.transform.rotation = Quaternion.Euler (mDir);
 
-		//mDir = new Vector3 ( mAnim.GetFloat("moveLR"), 0, mAnim.GetFloat("moveFB") );
+	}
+
+	public void MovePos(){
+
+		// 캐릭터 몸체 이동
 		mDir = InputTracking.GetLocalPosition (VRNode.CenterEye);
 		mDir.y = 0;
 		transform.Translate ( mDir * Time.smoothDeltaTime * moveSpeed );
 
-		//InputTracking.Recenter ();
 	}
 
 	public override void Attack(){

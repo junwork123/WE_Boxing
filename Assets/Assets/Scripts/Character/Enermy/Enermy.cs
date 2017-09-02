@@ -16,33 +16,29 @@ public class Enermy : Characters<Player>
 	public float attackDir = 0.5f;
 	public bool isUnBeatTime = false;
 
-	float Count = 5f;
-	float time = 0f;
-
 	// Use this for initialization
-	public void Start () {
+	public void Awake(){
 		// Player 델리게이트에
 		// Enermy 피격 함수를 등록
-		PlayerDelig.OnAttack += mDelig.getDamage;
+		mDelig._AttackHandler += mDelig.getDamage;
 	
-		//ResetState ();	
-		//mNav.SetDestination (target.transform.position);
-		this.gameObject.SetActive (true);
+		ResetState ();	
+		mNav.SetDestination (target.transform.position);
+		//this.gameObject.SetActive (true);
 
 	}
 
 	void Update () 
 	{ 
-		/*
+		
 		if (this.gameObject.activeSelf == true)
 			mState.Update ();
-		*/
 
-		if (HP <= 0)
-			Die ();
+
 		mAnim.SetBool ("Left", false);
 		mAnim.SetBool ("Right", false);
-		mAnim.SetBool ("Damaged", false);
+		mHand_L.enabled = false;
+		mHand_R.enabled = false;
 
 		float moveFB = Input.GetAxis ("Horizontal");
 		float moveLR = Input.GetAxis ("Vertical");
@@ -69,33 +65,21 @@ public class Enermy : Characters<Player>
 		if (Input.GetMouseButton (0)) { 
 			mAnim.SetBool ("Left", true);
 			mAnim.SetBool ("Right", false);
+			mHand_L.enabled = true;
+			mHand_R.enabled = false;
+			SoundManager.instance.AttackWindSound ();
 		} 
 
 		// 오른쪽 공격 설정 
 		if (Input.GetMouseButton (1)) { 
 			mAnim.SetBool ("Left", false);
 			mAnim.SetBool ("Right", true);
+			mHand_L.enabled = false;
+			mHand_R.enabled = true;
+			SoundManager.instance.AttackWindSound ();
 		}
-
-	} 
-
-	public void Die(){
 		
-		time += Time.deltaTime;
-
-		mAnim.SetBool ("isDead", true);
-		mAnim.SetBool ("Left", false);
-		mAnim.SetBool ("Right", false);
-		mAnim.SetBool ("guard", false);
-
-		if( isActiveAndEnabled && time >= Count)
-		{
-			this.gameObject.SetActive(false);
-			time = 0f;
-			UnityEngine.SceneManagement.SceneManager.LoadScene("Gameover",UnityEngine.SceneManagement.LoadSceneMode.Single);
-		}
-
-	}
+	} 
 
 	public void ChangeState(State_FSM<Enermy> _state){
 		mState.ChangeState (_state);

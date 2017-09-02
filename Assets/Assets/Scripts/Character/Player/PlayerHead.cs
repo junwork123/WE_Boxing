@@ -15,9 +15,10 @@ public class PlayerHead : MonoBehaviour
 		headPos.transform.SetParent (head.transform, false);
 		VRCam.transform.SetParent (headPos.transform, false);*/
 	}
+	/*
 	void Update(){
 		//VRCam.transform.position = new Vector3 (VRCam.transform.position.x, VRCam.transform.position.y, VRCam.transform.position.z);
-	}
+	}*/
 }
 
 

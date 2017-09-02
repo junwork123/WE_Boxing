@@ -6,6 +6,7 @@ public class HandCol_P : MonoBehaviour {
 	public Player me;
 	public Enermy opponent;
 	public BoxCollider mHand;
+	public ArduInput _Input;
 
 	void Start () {
 		mHand.enabled = false;
@@ -15,7 +16,9 @@ public class HandCol_P : MonoBehaviour {
 	{
 		//적과 부딪힐때만 충돌처리 일어나도록 처리
 		if (col.tag == opponent.tag && opponent.isUnBeatTime == false) {
-			opponent.mDelig.getDamage ();
+			opponent.mDelig._AttackHandler ();
+			SoundManager.instance.AttackSound ();
+			_Input.punch ();
 		}
 	}
 

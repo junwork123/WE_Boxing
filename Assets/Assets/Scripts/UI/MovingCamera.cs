@@ -14,11 +14,9 @@ public class MovingCamera : MonoBehaviour {
 	public CanvasGroup startCanvasG;
 	public CanvasGroup settingCanvasG;
 
-	public Player player;
-	public Enermy enermy;
-
 	const int ON = 1;
 	const int OFF = 0;
+	int isPressed = -1;
 
     // Use this for initialization
     void Start()
@@ -65,37 +63,41 @@ public class MovingCamera : MonoBehaviour {
     public void PressButton(int number)
     {
 
-		switch (number) {
-		case 1: //start button
-			Crosshair.isStarted = true;
+		if (isPressed != number) {
+			switch (number) {
+			case 1: //start button
+				Crosshair.isStarted = true;
 			//goCamera.SetActive (false);
 
-			Cursor.lockState = CursorLockMode.Locked;
+				Cursor.lockState = CursorLockMode.Locked;
 
-			OnOff (startCanvas, startCanvasG, OFF);// 스타트 캔버스 hide
-			OnOff (settingCanvas, settingCanvasG, OFF);// 스타트 캔버스 hide
-			goCamera.SetActive (false);
-			player.gameObject.SetActive (true);
-			enermy.gameObject.SetActive (true);
+				OnOff (startCanvas, startCanvasG, OFF);// 스타트 캔버스 hide
+				OnOff (settingCanvas, settingCanvasG, OFF);// 스타트 캔버스 hide
+				goCamera.SetActive (false);
+				SoundManager.started = true;
+				SoundManager.instance.BGMSound ("Start");
+
 			//StartCoroutine ("StartGame");
 
-			break;
-		case 2: // setting button
-			OnOff (startCanvas, startCanvasG, OFF); // 스타트 캔버스 hide
-			OnOff (settingCanvas, settingCanvasG, ON);// 세팅 캔버스 reveal
-			break;
-		case 3: // quit button
-			OnOff (startCanvas, startCanvasG, OFF);
-			OnOff (settingCanvas, settingCanvasG, OFF);
-			Application.Quit ();
-			break;
+				break;
+			case 2: // setting button
+				OnOff (startCanvas, startCanvasG, OFF); // 스타트 캔버스 hide
+				OnOff (settingCanvas, settingCanvasG, ON);// 세팅 캔버스 reveal
+				break;
+			case 3: // quit button
+				OnOff (startCanvas, startCanvasG, OFF);
+				OnOff (settingCanvas, settingCanvasG, OFF);
+				Application.Quit ();
+				break;
 
-		case 4: // back button
-			OnOff (startCanvas, startCanvasG, ON);
-			OnOff (settingCanvas, settingCanvasG, OFF);
-			break;
+			case 4: // back button
+				OnOff (startCanvas, startCanvasG, ON);
+				OnOff (settingCanvas, settingCanvasG, OFF);
+				break;
+			}
+
+			isPressed = number;
 		}
-
     }
 
 	public void OnOff(Canvas canvas, CanvasGroup canvasG, int FLAG){

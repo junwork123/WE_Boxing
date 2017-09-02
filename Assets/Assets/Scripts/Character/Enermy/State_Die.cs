@@ -8,7 +8,7 @@ public class State_Die : State_FSM<Enermy>
 	{
 		get	{ return instance; }
 	}
-	float Count = 5f;
+	float Count = 10f;
 	float time = 0f;
 
 	static State_Die() { }
@@ -21,13 +21,14 @@ public class State_Die : State_FSM<Enermy>
 
 	public override void UpdateState(Enermy _Enermy)
 	{
+		
 		time += Time.deltaTime;
 
 		_Enermy.mAnim.SetBool ("isDead", true);
 		_Enermy.mAnim.SetBool ("Left", false);
 		_Enermy.mAnim.SetBool ("Right", false);
 		_Enermy.mAnim.SetBool ("guard", false);
-
+			
 		if( _Enermy.isActiveAndEnabled && time >= Count)
 		{
 			_Enermy.gameObject.SetActive(false);
