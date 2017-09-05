@@ -19,7 +19,7 @@ public class MovingCamera : MonoBehaviour {
 	int isPressed = -1;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
 		startCanvasG.alpha = 1;
 		startCanvas.enabled = true;
@@ -27,6 +27,11 @@ public class MovingCamera : MonoBehaviour {
 		settingCanvasG.alpha = 0;
 		settingCanvas.enabled = false;
 		//StartCoroutine("StartGame");
+
+		Crosshair.isStarted = false;
+		goCamera.SetActive (true);
+
+		SoundManager.started = false;
     }
 
     IEnumerator StartGame()

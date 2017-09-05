@@ -19,7 +19,7 @@ public class Crosshair: MonoBehaviour {
 	public static bool isStarted;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         defaultPosZ = transform.localPosition.z;
 		setCrosshairColor ("blue");
 		mCamera = startCamera;
@@ -28,7 +28,7 @@ public class Crosshair: MonoBehaviour {
 	void OnDrawGizmos()
 	{
 		Gizmos.DrawLine(mCamera.transform.position, mCamera.transform.position + mCamera.transform.forward * 1000f);
-		//테스트용 기즈모 그리기. 기즈모라는 것은 Raycast에서의 가상의 광선을 실제로 보여주는 역할을 합니다.
+		//테스트용 기즈모 그리기. Raycast에서의 가상의 광선을 실제로 보여주는 역할
 	}*/
 
 	void FixedUpdate(){

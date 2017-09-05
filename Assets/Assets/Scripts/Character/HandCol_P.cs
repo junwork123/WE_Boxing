@@ -8,7 +8,7 @@ public class HandCol_P : MonoBehaviour {
 	public BoxCollider mHand;
 	public ArduInput _Input;
 
-	void Start () {
+	void Awake () {
 		mHand.enabled = false;
 	}
 

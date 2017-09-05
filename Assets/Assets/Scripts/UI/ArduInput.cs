@@ -14,7 +14,7 @@ public class ArduInput : MonoBehaviour
 	public Text[] _ToggleText;
 	bool togglo_on = false;
 
-    void Start()
+    void Awake()
     {
 		sp = new SerialPort("COM5", 115200, 
 						System.IO.Ports.Parity.None, 8, System.IO.Ports.StopBits.One);

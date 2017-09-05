@@ -109,7 +109,6 @@
      <Compile Include="Assets\Scripts\Character\Player\PlayerHead.cs" />
      <Compile Include="Assets\Scripts\Character\Player\PlayerInput.cs" />
      <Compile Include="Assets\Scripts\UI\ArduInput.cs" />
-     <Compile Include="Assets\Scripts\UI\BloodRepeatScript.cs" />
      <Compile Include="Assets\Scripts\UI\Crosshair.cs" />
      <Compile Include="Assets\Scripts\UI\Crowd.cs" />
      <Compile Include="Assets\Scripts\UI\FrameManager.cs" />

@@ -7,7 +7,7 @@ public class HandCol_E : MonoBehaviour {
 	public Enermy me;
 	public BoxCollider mHand;
 
-	void Start () {
+	void Awake () {
 		mHand.enabled = false;
 	}
 

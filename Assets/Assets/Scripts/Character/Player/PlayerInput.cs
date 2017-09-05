@@ -84,7 +84,7 @@ public class PlayerInput : MonoBehaviour {
 			_player.mAnim.SetBool ("Left", false);
 			_player.mAnim.SetBool ("Right", true);
 			SoundManager.instance.AttackWindSound ();
-			//InputTracking.Recenter ();
+			InputTracking.Recenter ();
 		}
 		/*
 		// 어택 모드 설정

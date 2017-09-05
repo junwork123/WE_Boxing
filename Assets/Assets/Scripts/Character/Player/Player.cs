@@ -16,8 +16,6 @@ public class Player : Characters<Enermy>
 	public Vector3 mDir;
 	public bool isUnBeatTime = false;
 	public IEnumerator mCorutine;
-	public BoxCollider mMyoCol_L;
-	public BoxCollider mMyoCol_R;
 
 	public Transform tranformBody;
 	public Transform tranformCam;
@@ -28,13 +26,16 @@ public class Player : Characters<Enermy>
 
 	public void Awake(){
 		mAnim.SetInteger ("AttackMode", 1);
-		this.gameObject.SetActive (true);
 
-		mMyoCol_L.enabled = true;
-		mMyoCol_R.enabled = true;
 		mDir = InputTracking.GetLocalPosition (VRNode.CenterEye);
-
 		mDelig._AttackHandler += mDelig.getDamage;
+
+
+		mAnim.SetBool ("isDead", false);
+		mAnim.SetBool ("Left", false);
+		mAnim.SetBool ("Right", false);
+		mAnim.SetBool ("guard", false);
+		HP = 200;
 	}
 
 	void Update () 

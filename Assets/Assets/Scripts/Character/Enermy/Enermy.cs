@@ -12,7 +12,7 @@ public class Enermy : Characters<Player>
 	public EnermyDelig mDelig;
 	public SkinnedMeshRenderer mRender;
 
-	public float attackDistance = 1.1f;
+	public float attackDistance = 1.2f;
 	public float attackDir = 0.5f;
 	public bool isUnBeatTime = false;
 
@@ -25,6 +25,12 @@ public class Enermy : Characters<Player>
 		ResetState ();	
 		mNav.SetDestination (target.transform.position);
 		//this.gameObject.SetActive (true);
+
+		mAnim.SetBool ("isDead", false);
+		mAnim.SetBool ("Left", false);
+		mAnim.SetBool ("Right", false);
+		mAnim.SetBool ("guard", false);
+		HP = 100;
 
 	}
 
