@@ -121,6 +121,7 @@
      <Compile Include="Assets\Scripts\UI\HPBar\OrderList.cs" />
      <Compile Include="Assets\Scripts\UI\Look.cs" />
      <Compile Include="Assets\Scripts\UI\MovingCamera.cs" />
+     <Compile Include="Assets\Scripts\UI\ResetButtons.cs" />
      <Compile Include="Assets\Scripts\UI\SoundManager.cs" />
      <Compile Include="Assets\Scripts\UI\ToggleButton.cs" />
      <Compile Include="Assets\Scripts\UI\VRGaze.cs" />
