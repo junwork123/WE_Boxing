@@ -29,7 +29,8 @@ public class PlayerDelig : CharacterDelig
 		if (_Player.HP > 1) {
 
 			_Player.isUnBeatTime = true;
-			_Player.mAnim.SetBool ("Damaged", true);
+			// 플레이어 피격 모션 비활성화
+			//_Player.mAnim.SetBool ("Damaged", true);
 			_Player.mCorutine = UnBeatTime ();
 			StartCoroutine (_Player.mCorutine);
 			SoundManager.instance.PainSound ();

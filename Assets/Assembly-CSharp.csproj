@@ -112,13 +112,7 @@
      <Compile Include="Assets\Scripts\UI\Crosshair.cs" />
      <Compile Include="Assets\Scripts\UI\Crowd.cs" />
      <Compile Include="Assets\Scripts\UI\FrameManager.cs" />
-     <Compile Include="Assets\Scripts\UI\HPBar\Margin.cs" />
-     <Compile Include="Assets\Scripts\UI\HPBar\MonoDockList.cs" />
-     <Compile Include="Assets\Scripts\UI\HPBar\MonoHealthbar.cs" />
-     <Compile Include="Assets\Scripts\UI\HPBar\MonoManabar.cs" />
-     <Compile Include="Assets\Scripts\UI\HPBar\MonoTexture.cs" />
-     <Compile Include="Assets\Scripts\UI\HPBar\MonoTexture2.cs" />
-     <Compile Include="Assets\Scripts\UI\HPBar\OrderList.cs" />
+     <Compile Include="Assets\Scripts\UI\HPBar.cs" />
      <Compile Include="Assets\Scripts\UI\Look.cs" />
      <Compile Include="Assets\Scripts\UI\MovingCamera.cs" />
      <Compile Include="Assets\Scripts\UI\ResetButtons.cs" />

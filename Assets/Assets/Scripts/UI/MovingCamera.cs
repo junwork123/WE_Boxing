@@ -14,6 +14,8 @@ public class MovingCamera : MonoBehaviour {
 	public CanvasGroup startCanvasG;
 	public CanvasGroup settingCanvasG;
 
+	public HPBar hpBar;
+
 	const int ON = 1;
 	const int OFF = 0;
 	int isPressed = -1;
@@ -34,37 +36,6 @@ public class MovingCamera : MonoBehaviour {
 		SoundManager.started = false;
     }
 
-    IEnumerator StartGame()
-    {
-		
-        yield return new WaitForSeconds(0.3f);
-        Camera.allCameras[4].depth = 6;
-        yield return new WaitForSeconds(1);
-        Camera.allCameras[3].depth = 7;
-        yield return new WaitForSeconds(1);
-        Camera.allCameras[2].depth = 8;
-        yield return new WaitForSeconds(1);
-        Camera.allCameras[1].depth = 9;
-        yield return new WaitForSeconds(1);
-        Camera.allCameras[0].depth = 10;
-
-		Debug.Log (this.ToString());
-		StopCoroutine (StartGame());
-    }
-	/*
-    // Update is called once per frame
-    void Update()
-    {
-		if (Input.GetKeyDown (KeyCode.Alpha1))
-			PressButton (1);
-		if (Input.GetKeyDown (KeyCode.Alpha2))
-			PressButton (2);
-		if (Input.GetKeyDown (KeyCode.Alpha3))
-			PressButton (3);
-		if (Input.GetKeyDown (KeyCode.Alpha4))
-			PressButton (4);
-    }
-    */
     public void PressButton(int number)
     {
 
@@ -81,7 +52,7 @@ public class MovingCamera : MonoBehaviour {
 				goCamera.SetActive (false);
 				SoundManager.started = true;
 				SoundManager.instance.BGMSound ("Start");
-
+				hpBar.StartTimer ();
 			//StartCoroutine ("StartGame");
 
 				break;

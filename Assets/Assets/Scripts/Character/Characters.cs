@@ -9,6 +9,7 @@ public class Characters<T> : MonoBehaviour, ICharacters
 	public float comboDamage = 5;
 
 	public float Damage = 1;
+	public float HPMax = 100;
 	public float HP = 100;
 
 	public Animator mAnim; 	// 애니메이션
