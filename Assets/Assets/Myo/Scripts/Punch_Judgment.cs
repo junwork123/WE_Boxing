@@ -7,7 +7,7 @@ public class Punch_Judgment : MonoBehaviour {
 
 	public Vector3   Accel;
 	public JointOrientation test;
-	public static string attackMode;
+	public static string attackMode = "";
 	/*
 	private float[] arraccelX = new float[15];
 	private float[] arraccelY = new float[15];
