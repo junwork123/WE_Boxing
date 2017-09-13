@@ -36,6 +36,14 @@ public class MovingCamera : MonoBehaviour {
 		SoundManager.started = false;
     }
 
+	public void Update(){
+		if (Input.GetKeyDown (KeyCode.Backspace)) {
+			OnOff (startCanvas, startCanvasG, ON);
+			OnOff (settingCanvas, settingCanvasG, OFF);	
+		}
+	}
+
+
     public void PressButton(int number)
     {
 
