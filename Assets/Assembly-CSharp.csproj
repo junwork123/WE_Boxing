@@ -117,7 +117,7 @@
      <Compile Include="Assets\Scripts\UI\Button\ComportManager.cs" />
      <Compile Include="Assets\Scripts\UI\Button\Crosshair.cs" />
      <Compile Include="Assets\Scripts\UI\Button\MovingCamera.cs" />
-     <Compile Include="Assets\Scripts\UI\Button\ResetButton.cs" />
+     <Compile Include="Assets\Scripts\UI\Button\RetryButton.cs" />
      <Compile Include="Assets\Scripts\UI\Button\ToggleButton.cs" />
      <Compile Include="Assets\Scripts\UI\Button\VRGaze.cs" />
      <None Include="Assets\Textures\WB\keyframe_information.txt" />
