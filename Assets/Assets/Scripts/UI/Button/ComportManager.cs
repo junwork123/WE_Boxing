@@ -6,13 +6,9 @@ using System.IO.Ports;
 
 public class ComportManager : MonoBehaviour
 {
-<<<<<<< HEAD
+
     public CanvasInputManager canvasMgr;
 
-=======
-	public SerialPort serial_L;
-	public SerialPort serial_R;
->>>>>>> 848a8254390eb034c476f532aa0c4a061699fe39
 	public string[] ports;
 	int portIdx = 0;
 	int cnt = 0;
@@ -22,10 +18,6 @@ public class ComportManager : MonoBehaviour
 
 	void Awake()
 	{
-<<<<<<< HEAD
-
-=======
->>>>>>> 848a8254390eb034c476f532aa0c4a061699fe39
         ports = SerialPort.GetPortNames();
 
 		foreach (Text t in _ToggleText) {
@@ -36,15 +28,11 @@ public class ComportManager : MonoBehaviour
 
 	public void setPortName(int idx){
 		if (cnt == 0)
-<<<<<<< HEAD
 			SaveArduino.serial_L.PortName = ports [idx];
+		
 		else if (cnt == 1)
             SaveArduino.serial_R.PortName = ports [idx];
-=======
-			serial_L.PortName = ports [idx];
-		else if (cnt == 1)
-			serial_R.PortName = ports [idx];
->>>>>>> 848a8254390eb034c476f532aa0c4a061699fe39
+
 		else
 			cnt = 0;
 		
@@ -54,7 +42,6 @@ public class ComportManager : MonoBehaviour
 	public void Open(){
 
         // 포트 연결
-<<<<<<< HEAD
         if ((!SaveArduino.serial_L.IsOpen) && (!SaveArduino.serial_R.IsOpen))
         {
 
@@ -87,27 +74,11 @@ public class ComportManager : MonoBehaviour
 
             Debug.Log("Connected " + SaveArduino.serial_L.PortName);
             Debug.Log("Connected " + SaveArduino.serial_R.PortName);
-=======
-		if ( (!serial_L.IsOpen) && (!serial_R.IsOpen) ) {
-
-			try{
-				serial_L.Open();
-				serial_R.Open();
-			} catch{
-				Debug.Log ("error");
-			} finally{
-				Debug.Log ("Connected " + serial_L.PortName );
-				Debug.Log ("Connected " + serial_R.PortName );
->>>>>>> 848a8254390eb034c476f532aa0c4a061699fe39
 
             foreach (Toggle t in _Toggle)
                 t.isOn = false;
 
         }
 	}
-<<<<<<< HEAD
-=======
-	}
->>>>>>> 848a8254390eb034c476f532aa0c4a061699fe39
 
 }

@@ -7,11 +7,8 @@ using System.IO.Ports;
 public class CanvasInputManager : MonoBehaviour
 {
 	public ComportManager ComMgr;
-<<<<<<< HEAD
     public MovingCamera moveCam;
 
-=======
->>>>>>> 848a8254390eb034c476f532aa0c4a061699fe39
 	public void Update(){
 		if (Input.GetKey (KeyCode.O))
 			Reset ();
@@ -22,13 +19,10 @@ public class CanvasInputManager : MonoBehaviour
 			else
 				Time.timeScale = 0f;
 		}
-
-<<<<<<< HEAD
+			
         if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            moveCam.OnOff(moveCam.startCanvas, moveCam.startCanvasG, 1);
-            moveCam.OnOff(moveCam.settingCanvas, moveCam.settingCanvasG, 0);
-        }
+			BackCanvas ();
+        
 
         if (Input.GetKey (KeyCode.Keypad7))
 			ComMgr._Toggle [0].isOn = true;
@@ -37,15 +31,6 @@ public class CanvasInputManager : MonoBehaviour
 			ComMgr._Toggle [1].isOn = true;
 		
 		if (Input.GetKey (KeyCode.Keypad9))
-=======
-		if (Input.GetKey (KeyCode.Keypad1))
-			ComMgr._Toggle [0].isOn = true;
-		
-		if (Input.GetKey (KeyCode.Keypad2))
-			ComMgr._Toggle [1].isOn = true;
-		
-		if (Input.GetKey (KeyCode.Keypad3))
->>>>>>> 848a8254390eb034c476f532aa0c4a061699fe39
 			ComMgr._Toggle [2].isOn = true;
 		
 		if (Input.GetKey (KeyCode.Keypad4))
@@ -61,7 +46,6 @@ public class CanvasInputManager : MonoBehaviour
 		foreach (Toggle e in ComMgr._Toggle) {
 			e.isOn = false;
 		}
-<<<<<<< HEAD
         SaveArduino.serial_L.Close ();
         SaveArduino.serial_R.Close ();
 	}
@@ -73,8 +57,6 @@ public class CanvasInputManager : MonoBehaviour
 
         moveCam.startCanvas.GetComponent<BoxCollider>().enabled = true;
         moveCam.settingCanvas.GetComponent<BoxCollider>().enabled = false;
-=======
->>>>>>> 848a8254390eb034c476f532aa0c4a061699fe39
     }
 
 }

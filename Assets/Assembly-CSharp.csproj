@@ -118,10 +118,7 @@
      <Compile Include="Assets\Scripts\UI\Button\Crosshair.cs" />
      <Compile Include="Assets\Scripts\UI\Button\MovingCamera.cs" />
      <Compile Include="Assets\Scripts\UI\Button\RetryButton.cs" />
-<<<<<<< HEAD
      <Compile Include="Assets\Scripts\UI\Button\SaveArduino.cs" />
-=======
->>>>>>> 848a8254390eb034c476f532aa0c4a061699fe39
      <Compile Include="Assets\Scripts\UI\Button\ToggleButton.cs" />
      <Compile Include="Assets\Scripts\UI\Button\VRGaze.cs" />
      <None Include="Assets\Textures\WB\keyframe_information.txt" />
