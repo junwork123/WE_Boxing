@@ -30,7 +30,6 @@ public class Enermy : Characters<Player>
 		mAnim.SetBool ("Left", false);
 		mAnim.SetBool ("Right", false);
 		mAnim.SetBool ("guard", false);
-		HP = 100;
 
 	}
 

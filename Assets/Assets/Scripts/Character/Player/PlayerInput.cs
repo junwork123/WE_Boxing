@@ -14,8 +14,9 @@ public class PlayerInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Init ();
-		//Move ();
 		Attack ();
+		getOptionalKeys ();
+		//Move ();
 		//Avoid ();
 
 	}
@@ -35,8 +36,13 @@ public class PlayerInput : MonoBehaviour {
 
 	}
 	*/
-	public int getGesture (){
-		return 0;
+	public void getOptionalKeys (){
+        if (Input.GetKey(KeyCode.P)) {
+			if( Time.timeScale == 0 )
+				Time.timeScale = 1f;
+			else
+				Time.timeScale = 0f;
+		}
 	}
 
 	public void Attack(){
@@ -86,40 +92,8 @@ public class PlayerInput : MonoBehaviour {
 			SoundManager.instance.AttackWindSound ();
 			InputTracking.Recenter ();
 		}
-		/*
-		// 어택 모드 설정
-		if (Input.GetKeyDown (KeyCode.Alpha1)) {
-			_player.mAnim.SetInteger ("AttackMode", 1);
-
-		} else if (Input.GetKeyDown (KeyCode.Alpha2)) {
-			_player.mAnim.SetInteger ("AttackMode", 2);
-
-		} else if (Input.GetKeyDown (KeyCode.Alpha3)) {
-			_player.mAnim.SetInteger ("AttackMode", 3);
-
-		} else if (Input.GetKeyDown (KeyCode.Alpha4)) {
-			_player.mAnim.SetInteger ("AttackMode", 4);
-		}
-		// 왼쪽 공격 설정
-		if (Input.GetMouseButton (0)) { 
-			_player.mAnim.SetBool ("Left", true);
-			_player.mAnim.SetBool ("Right", false);
-
-			_LeftInput.punch ();
-			_RightInput.punch ();
-		} 
-
-		// 오른쪽 공격 설정 
-		if (Input.GetMouseButton (1)) { 
-			_player.mAnim.SetBool ("Left", false);
-			_player.mAnim.SetBool ("Right", true);
-
-			_LeftInput.shoot ();
-			_RightInput.shoot ();
-		}*/
-
 	}
-
+	/*
 	public void Avoid(){
 
 		if (Input.GetKey (KeyCode.Q)) {
@@ -149,6 +123,6 @@ public class PlayerInput : MonoBehaviour {
 		} 
 
 
-	}
+	}*/
 
 }
