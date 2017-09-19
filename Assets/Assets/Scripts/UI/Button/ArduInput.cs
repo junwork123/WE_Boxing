@@ -7,6 +7,7 @@ using System.IO.Ports;
 public class ArduInput : MonoBehaviour
 {
 	public SerialPort serial;
+<<<<<<< HEAD
     public int dir;
 
     public void Awake()
@@ -15,6 +16,16 @@ public class ArduInput : MonoBehaviour
             serial = SaveArduino.serial_L;
         else if (dir == 2 )
             serial = SaveArduino.serial_R;
+=======
+
+    void Awake()
+    {
+		serial = new SerialPort("COM5", 115200, 
+						System.IO.Ports.Parity.None, 8, System.IO.Ports.StopBits.One);
+		serial.RtsEnable = true;
+		serial.Handshake = Handshake.None;
+		serial.ReadTimeout = 200;
+>>>>>>> 848a8254390eb034c476f532aa0c4a061699fe39
     }
 
     public void punch(){
