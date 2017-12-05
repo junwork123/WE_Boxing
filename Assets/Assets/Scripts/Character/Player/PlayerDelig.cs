@@ -64,7 +64,7 @@ public class PlayerDelig : CharacterDelig
 
 		_Player.mRender.material.color = new Color32 (255, 255, 255, 255);
 		_Player.isUnBeatTime = false;
-		_Player.mAnim.SetBool ("Damaged", false);
+		//_Player.mAnim.SetBool ("Damaged", false);
 
 		yield return null;
 

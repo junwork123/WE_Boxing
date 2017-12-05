@@ -18,14 +18,19 @@ public class ArduInput : MonoBehaviour
     }
 
     public void punch(){
-		if (serial.IsOpen)
-			serial.Write ("1");
-		else
-			Debug.Log ("not open - punch");
+		if (SaveArduino.serial_L.IsOpen && dir == 1 )
+            SaveArduino.serial_L.Write ("1");
+		else if(SaveArduino.serial_R.IsOpen && dir == 2)
+            SaveArduino.serial_R.Write("1");
+        else
+            Debug.Log ("not open - punch");
 	}
 	public void shoot() {
-		if (serial.IsOpen)
-			serial.Write ("5");
+		if (SaveArduino.serial_R.IsOpen || SaveArduino.serial_L.IsOpen)
+        {
+            SaveArduino.serial_L.Write("5");
+            SaveArduino.serial_R.Write("5");
+        }
 		else
 			Debug.Log ("not open - shoot");	
 	}

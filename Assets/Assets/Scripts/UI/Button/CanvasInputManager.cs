@@ -10,6 +10,7 @@ public class CanvasInputManager : MonoBehaviour
     public MovingCamera moveCam;
 
 	public void Update(){
+
 		if (Input.GetKey (KeyCode.O))
 			Reset ();
 		
